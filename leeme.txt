@@ -64,3 +64,6 @@ modelos:
 	4)$datos->setFetchMode(PDO::FETCH_ASSOC);
 		conbierte la respuesta en un array referencial, quitas las referencias numericas
 	
+-------------------------------------------------------------------------------------------
+
+

@@ -69,34 +69,11 @@ class appController extends Controller
 
     }
 
-    function buscar_chicas(){
-        $this->chicas=$this->loadModel('principal');
-       echo json_encode( $this->chicas->buscar_chicas($_POST['nombre_chica']));
-    }
 
-    function eliminar_chicas(){
-        $this->chicas=$this->loadModel('principal');
-        echo json_encode($this->chicas->eliminar_chicas($_POST['id_chica']));
-    }
-
-    function pago_chicas(){
-       $this->chicas=$this->loadModel('principal');
-       echo json_encode($this->chicas->pago_chicas($_POST['id_chica'],$_POST['meses']));
-    }
-
-    function fotos_chicas(){
-        $this->chicas=$this->loadModel('principal');
-        echo json_encode($this->chicas->fotos_chicas($_POST['id_chica']));
-    }
-
-    function foto_perfil(){
-        $this->chicas=$this->loadModel('principal');
-        echo json_encode($this->chicas->foto_perfil($_POST['id_foto'],$_POST['id_chica']));
-    }
     
     function updonw(){
      $objeto=$this->loadModel('app');
-       echo print_r($_POST);
+       
        if ($_POST['accion']==0) {
             $objeto->gf($_POST);
        }else{
