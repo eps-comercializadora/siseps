@@ -1,89 +1,42 @@
 $(document).ready(function(){
 
 
+function archivo(input)
+{
+  $("div#prevista").remove();
+  $('#list').addClass('active');
+  reader=Array();
+  for (var i = 0; i < input.files.length ;  i++)
+  {
+    reader[i] = new FileReader();
+    reader[i].numero= i;
+    reader[i].onloadstart= function(){
 
-	$( document ).on( "change", "#cedula", function() {
+      $('#list').after('<div id="cargarr'+this.numero+'" class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">img ==='+this.numero+'</div>' );
 
-	$.get(base_url + 'registro/verificar_cedula_profesor',{
+    }
+    reader[i].onloadend= function(){
 
-		'cedula':$('#cedula').val()
+      $('div#cargarr'+this.numero).remove();
+    }
+    reader[i].onload= function()
+    {
+      $('#list').after('<div id="prevista" class="prviuw"><img class="" width="100px" height="100px" src="'+this.result+' " ></div>' );
+    }
+    reader[i].readAsDataURL(input.files[i]);
+  }
 
-
-	},function(datos){
-
-if (datos){
-
-	
-
-$('#cedula').val('');
-alertify.error('ya este numero de cedula esta registrada');
-$('#cedula').focus();
-
-};
-
-	},'json');
-
-
-});
-
-
-$( document ).on( "click", "#volver", function() {
-
-
-	$.post(base_url + 'registro/renderizarinicio')});
-
-
-
-
-
-
-		
-$( document ).on( "click", "#registrar", function() {
-
-
-if($('#form_registro').validationEngine('validate')){
-
-
-
-$.get(base_url + 'registro/registrarr',{
-'enviar':1 ,
-'cedula':$('#cedula').val(),
-'apellidos':$('#apellidos').val(),
-'nombres':$('#nombres').val(),
-'login':$('#loginr').val(),
-'email':$('#email').val(),
-'pass':$('#pass').val(),
-'direccion':$('#direccion').val(),
-'telefono':$('#telefono').val()
-},function(datos){
-
-viewMsjup(0,datos,3000);	
-
-
-
-if(datos==1){
-alertify.success('registro completado');
-
-setTimeout(function(){location.href=base_url},3000);
-
-}else{
-	alertify.error(datos);
+  console.log(input);
+  
 }
 
-
-	 });
-}
+$('#files').change(function()
+{
+  archivo(this);
 });
-
-
-
-
-
+//................................................................................................
 
 
 
 
 });
-		
-
-	

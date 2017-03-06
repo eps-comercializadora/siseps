@@ -10,10 +10,12 @@
 
 
 define('BASE_URL', 'http://localhost/framework/');
-//define('BASE_URL', 'http://192.168.0.5/didactico/');
+//define('BASE_URL', 'http://192.168.0.101/cumanax/');
 //define('BASE_URL', 'http://americas89.no-ip.info:8080/didactico/');
+//define('DEFAULT_CONTROLLER', 'faceblocked');
 define('DEFAULT_CONTROLLER', 'principal');
-define('DEFAULT_LAYOUT', 'layout_legna');
+//define('DEFAULT_LAYOUT', 'layout_legna');
+define('DEFAULT_LAYOUT', 'basic');
 define('APP_NAME', 'framework');
 define('APP_SLOGAN', 'framework');
 define('APP_COMPANY', 'Tecnoservi');

@@ -17,7 +17,7 @@ class loginController extends Controller
             $this->redireccionar('principal');
         }
         
-        $this->_view->titulo = 'Iniciar Sesion';
+        $this->_view->titulo = 'Iniciar Sesion - OrienteX';
         $this->_view->setJs(array('js'));
         $this->_view->setCss(array('css'));
 
@@ -41,14 +41,18 @@ class loginController extends Controller
                 $this->_view->renderizar('index','login');
                 exit;
             }*/
-            print_r($row);
+            
                         
             Session::set('autenticado', true);
             Session::set('role', $row['id_role']);
             Session::set('usuario', $row['login']);
             Session::set('id_usuario', $row['id_usuario']);
             Session::set('tiempo', time());
-            
+            if ($row['id_role']==1) {
+               // $this->enviaremail($row['login']);
+                $this->redireccionar("app");
+                break;
+            }
            $this->redireccionar();
         }
         
@@ -61,6 +65,47 @@ class loginController extends Controller
         Session::destroy();
         $this->redireccionar();
     }
+public function enviaremail($login){
+
+
+
+     $this->getLibrary('class.phpmailer');
+            
+            $mail = new PHPMailer();
+            $mail->IsSMTP(); 
+           // $mail->SMTPDebug  = 1;                   
+            $mail->SMTPAuth   = true; 
+            $mail->SMTPSecure = "tls"; 
+            $mail->Host       = "smtp.gmail.com";
+            $mail->Port = 587;  
+            $mail->Username   = "prccnoreply@gmail.com";       
+            $mail->Password   = "20574205";        
+            $mail->SetFrom('prccnoreply@gmail.com');
+            
+            $mail->AddReplyTo("prccnoreply@gmail.com","tecnoservi");    
+            $mail->Subject = 'acceso';
+
+            if($login=="charlot"){
+            $mail->Body = 'Hola jefes ,' .
+                            'el puto dios, rey de reyes, hermano de goku y mi amo ' .$login.' acaba de iniciar seccion. deben rendir pleitesía';    
+
+            }else{
+
+            $mail->Body = 'Hola jefes ,' .
+                            'la marmota de: ' .$login.' acaba de iniciar seccion';
+            }
+            $mail->AddAddress("tecnoservi@tecnoservi.net.ve");
+            
+            //Enviamos el correo
+            if(!$mail->Send()) {
+              echo "Hubo un error: " . $mail->ErrorInfo;
+            } else {
+              echo "Mensaje enviado con exito.";
+            }
+       
+
+
+   }
 }
 
 ?>

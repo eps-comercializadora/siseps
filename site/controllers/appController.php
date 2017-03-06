@@ -8,6 +8,9 @@ class appController extends Controller
 	
 	
     public function __construct() {
+
+        Session::acceso();
+
         parent::__construct();
       $this->app=$this->loadModel('app');
 		
@@ -44,33 +47,13 @@ class appController extends Controller
 
         	}
 
-                $color=Array();
-
-                 $fl=fopen(ROOT . 'layout'.DS.DEFAULT_LAYOUT.DS.'css'.DS.'css.info',"r");
-
-                 while (!feof($fl)) {
-
-                    $color[]=fgets($fl);
-
-
-                 }
-                 fclose($fl);
-
-                 $this->_view->colores=$color;
 
 
 
-
-            $this->_view->views=scandir(ROOT . 'site'.DS.'views');
-
-
-        	
+             $this->_view->bloqueo=$this->app->bloqueo();
+            $this->_view->bloqueo_datos=$this->app->bloqueo_datos();
+        	$this->_view->cont=$this->app->all_cont();
             $this->_view->logs=$this->app->all_logs();
-
-           
-
-
-
         	$this->_view->menus=$menu;
 			$this->_view->rol=$role;
 			$this->_view->matris=$matris;
@@ -78,123 +61,7 @@ class appController extends Controller
 	}
 
 
-    public function estilos(){
-
-
-        $nav=$_GET['nav'];
-        $letra_nav=$_GET['letra_nav'];
-        $letra_nav_principal=$_GET['letra_nav_principal'];
-        $letra_nav_hover=$_GET['letra_nav_hover'];
-
-        $header=$_GET['header'];
-        $header_letra_border=$_GET['header-letra-border'];
-
-
-        $titulos=$_GET['titulos'];
-        $titulo_letra_border=$_GET['titulo-letra-border'];
-        $pie=$_GET['pie'];
-        $pie_letra_border=$_GET['pie-letra-border'];
-        $fondo=$_GET['fondo'];
-        $ancho_header=$_GET['ancho_header'];
-
-
-
-            $fl=fopen(ROOT . 'layout'.DS.DEFAULT_LAYOUT.DS.'css'.DS.'referencia.css',"r");
-            $linea="";
-            $i=1;
-            while (!feof($fl)) {
-
-                /*nav*/
-                if ($i==2)
-                {
-                $linea .= "background-color: #$nav;\n";
-                fgets($fl);
-
-                }else if($i==5){
-                $linea .= "color: #$letra_nav; \n";
-                fgets($fl);
-                }else if($i==8){
-                $linea .= "color: #$letra_nav_principal; \n";
-                fgets($fl);
-                }else if($i==11){
-                $linea .= "color: #$letra_nav_hover; \n";
-                fgets($fl);
-                /*header*/
-                }else if($i==16){
-                $linea .= "background-color: #$header; \n";
-                fgets($fl);
-                }else if($i==18){
-                $linea .= "color: #$header_letra_border; \n";
-                fgets($fl);
-                }else if($i==19){
-                $linea .= "border-color: #$header_letra_border; \n";
-                fgets($fl);
-                 }else if($i==17){
-                $linea .= "min-height: ".$ancho_header."px;\n";
-                fgets($fl);
-                /*titulo*/
-                }else if($i==22){
-                $linea .= "color: #$titulo_letra_border; \n";
-                fgets($fl);
-
-                }else if($i==23){
-                $linea .= "border-color: #$titulo_letra_border; \n";
-                fgets($fl);
-
-                }else if($i==29){
-                $linea .= "background-color: #$titulos;\n";
-                fgets($fl);
-
-                /*pie*/
-
-                }else if($i==34){
-                $linea .= "background-color: #$pie;\n";
-                fgets($fl);
-
-                 }else if($i==37){
-                $linea .= "color: #$pie_letra_border;\n";
-                fgets($fl);
-
-                 }else if($i==41){
-                $linea .= "border-color: #$pie_letra_border;\n";
-                fgets($fl);
-                 /*fondo*/
-              }else if($i==44){
-                $linea .= "background-color: #$fondo;\n";
-                fgets($fl);
-                
-
-                }else{
-                    $linea .= fgets($fl);
-                }
-                
-            $i++;
-            }
-
-            fclose($fl);
-
-            $fl=fopen(ROOT . 'layout'.DS.DEFAULT_LAYOUT.DS.'css'.DS.'layout.css',"w+");
-            fputs($fl,$linea);
-            fclose($fl);
-
-             $fl=fopen(ROOT . 'layout'.DS.DEFAULT_LAYOUT.DS.'css'.DS.'css.info',"w+");
-            fputs($fl,$nav."\n");
-            fputs($fl,$letra_nav."\n");
-            fputs($fl,$letra_nav_principal."\n");
-            fputs($fl,$letra_nav_hover."\n");
-            fputs($fl,$header."\n");
-            fputs($fl,$header_letra_border."\n");
-            fputs($fl,$titulos."\n");
-            fputs($fl,$titulo_letra_border."\n");
-            fputs($fl,$pie."\n");
-            fputs($fl,$pie_letra_border."\n");
-            fputs($fl,$fondo."\n");
-            fputs($fl,$ancho_header);
-
-            fclose($fl);
-    }
-
-
+  
     function permisos_ch(){
 
 
@@ -202,8 +69,40 @@ class appController extends Controller
 
     }
 
+    function buscar_chicas(){
+        $this->chicas=$this->loadModel('principal');
+       echo json_encode( $this->chicas->buscar_chicas($_POST['nombre_chica']));
+    }
 
+    function eliminar_chicas(){
+        $this->chicas=$this->loadModel('principal');
+        echo json_encode($this->chicas->eliminar_chicas($_POST['id_chica']));
+    }
 
+    function pago_chicas(){
+       $this->chicas=$this->loadModel('principal');
+       echo json_encode($this->chicas->pago_chicas($_POST['id_chica'],$_POST['meses']));
+    }
+
+    function fotos_chicas(){
+        $this->chicas=$this->loadModel('principal');
+        echo json_encode($this->chicas->fotos_chicas($_POST['id_chica']));
+    }
+
+    function foto_perfil(){
+        $this->chicas=$this->loadModel('principal');
+        echo json_encode($this->chicas->foto_perfil($_POST['id_foto'],$_POST['id_chica']));
+    }
+    
+    function updonw(){
+     $objeto=$this->loadModel('app');
+       echo print_r($_POST);
+       if ($_POST['accion']==0) {
+            $objeto->gf($_POST);
+       }else{
+            $objeto->gf();
+       }
+    }
 }
 
 

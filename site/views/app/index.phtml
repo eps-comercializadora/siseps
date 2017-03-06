@@ -41,91 +41,80 @@
 
 
 	</div>
-	<div class="header-titulos col-xs-12">colores del layout</div>
-	<div id="color_aplicacion" class="col-xs-12 col-md-2 " style="background-color: <?php echo "#".$this->colores[7]; ?>;">
-		<center>
-		<div id="muestra_nav" class="col-xs-12 color_muestra" style="background-color: <?php echo "#".$this->colores[0]; ?>;" >nav</div>
-		<div id="muestra_header" class="col-xs-12 color_muestra" style="background-color: <?php echo "#".$this->colores[1]; ?>; color: <?php echo "#".$this->colores[2]; ?> ; border-color: <?php echo "#".$this->colores[2]; ?>;" >header</div>
-		<div id="muestra_titulos" class="col-xs-12 color_muestra" style="background-color: <?php echo "#".$this->colores[3]; ?>; color: <?php echo "#".$this->colores[4]; ?> ; border-color: <?php echo "#".$this->colores[4]; ?>;  ">titulos</div>
-		<div id="muestra_pie" class="col-xs-12 color_muestra" style="background-color: <?php echo "#".$this->colores[5]; ?>; color: <?php echo "#".$this->colores[6]; ?> ; border-color: <?php echo "#".$this->colores[6]; ?>;"  >pie</div>
-
+	<div class="header-titulos col-xs-12"> ADMINISTAR PAGO</div>
+	<div class="col-md-12">
+		<center><input class="form-control" type="text" id="buscar_chicas"></center>
+	</div>
+	<div class="col-md-12" id="div_contenedor2">
 		
-		<button id="cambiar_color" type="button" class="btn btn-success">cambiar color</button>
-</center>
+	</div>
 
-	</div>
-<div class="col-xs-12 col-md-4">
-
-	<div class="row">
-		<div class="col-xs-6">nav</div>
-		<div class="col-xs-6"><input id="nav" value="<?php echo $this->colores[0]; ?>" class="jscolor form-control"></input></div>		
-	</div>
-	<div class="row">
-		<div class="col-xs-6">letra del nav</div>
-		<div class="col-xs-6"><input id="letra_nav" value="<?php echo $this->colores[1]; ?>" class="jscolor form-control"></input></div>		
-	</div>
-	<div class="row">
-		<div class="col-xs-6">letra del nav principal</div>
-		<div class="col-xs-6"><input id="letra_nav_principal" value="<?php echo $this->colores[2]; ?>" class="jscolor form-control"></input></div>		
-	</div>
-	<div class="row">
-		<div class="col-xs-6">letra del nav hover</div>
-		<div class="col-xs-6"><input id="letra_nav_hover" value="<?php echo $this->colores[3]; ?>" class="jscolor form-control"></input></div>		
-	</div>
-	<div class="row">
-		<div class="col-xs-6">header</div>
-		<div class="col-xs-6"><input id="header" value="<?php echo $this->colores[4]; ?>" class="jscolor form-control"></input></div>
-	</div>
-	<div class="row">
-		<div class="col-xs-7">header-letra-border</div>
-		<div class="col-xs-5"><input id="header-letra-border" value="<?php echo $this->colores[5]; ?>" class="jscolor form-control"></input></div>
-	</div>
-	<div class="row">
-		<div class="col-xs-6">titulo</div>
-		<div class="col-xs-6"><input id="titulos" value="<?php echo $this->colores[6]; ?>" class="jscolor form-control"></input></div>
-	</div>
-	<div class="row">
-		<div class="col-xs-7">titulo-letra-border</div>
-		<div class="col-xs-5"><input id="titulo-letra-border" value="<?php echo $this->colores[7]; ?>" class="jscolor form-control"></input></div>
-	</div>
-	<div class="row">
-		<div class="col-xs-6">pie</div>
-		<div class="col-xs-6"><input id="piee" value="<?php echo $this->colores[8]; ?>" class="jscolor form-control"></input></div>
-	</div>
-	<div class="row">
-		<div class="col-xs-7">pie-letra-border</div>
-		<div class="col-xs-5"><input id="pie-letra-border" value="<?php echo $this->colores[9]; ?>" class="jscolor form-control"></input></div>
-	</div>
-</div>
-<div class="col-xs-12 col-md-4">
-
-	<div class="row">
-		<div class="col-xs-6">fondo</div>
-		<div class="col-xs-6"><input id="fondo" value="<?php echo $this->colores[10]; ?>" class="jscolor form-control"></input></div>		
-	</div>
-	<div class="row">
-		<div class="col-xs-6">ancho del header</div>
-		<div class="col-xs-6"><input type="num" id="ancho_header" value="<?php echo $this->colores[11]; ?>" class=" form-control"></input></div>
+		<div class="header-titulos col-xs-12"> up or donw web</div>
+	<div class="col-md-12">
+		<div class="col-md-6">
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="radio1" value="activar">
+			    activar el sistema 
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="radio1" value="desactivar">
+			    desantivar el sistema
+			  </label>
+			</div>
+			 <div class="form-group">
+			    <label for="">Hasta</label>
+			    <input type="text" value="<?php if (isset($this->bloqueo->fecha)){ echo $this->bloqueo->fecha;} ?>" class="form-control" id="fecha_activo" placeholder="">
+			  </div>
+			  <button type="submit" id="btn_actv" class="btn btn-default">enviar</button>
+		</div>
+		<div class="col-md-6">
+			<div>estado</div>
+			<?php if(!$this->bloqueo): ?>
+				el sistema esta activo.
+			<?php else:  ?>
+				el sistema se encuentra temporalmente fuera de servicio hasta la fecha <?php echo $this->bloqueo_datos['fecha'] ?>
+			<?php endif; ?>
+		</div>
+			
+		
 	</div>
 	
-</div>
 
 
-	<div class="col-xs-12">
-		<?php for ($i=0; $i < count($this->views) ; $i++): ?>
-
-			<?php echo $this->views[$i].'<br>'; ?> 
-
-		<?php endfor; ?>
-	</div>
-
+	
+<div class="header-titulos col-xs-12"> logs del sistemas</div>
 	<div class="col-xs-12 well">
 
 	<table class="table table-bordered">
-		<tr><td id="log_cen" colspan="6">log del sistema</td></tr>
+		
+		<tr>
+	
+		<td id="log_cen" colspan="7" >ips registrados</td>
+		
+		</tr>
+		<tr>
+	
+		<td>total</td>
+		<td>hoy</td>
+		<td>estas semana</td>
+		<td>este mes</td>
+		</tr>
+		<tr>
+	
+		<td><?php echo $this->cont['total']['num'] ?></td>
+		<td><?php echo $this->cont['hoy']['num'] ?></td>
+		<td><?php echo $this->cont['semana']['num'] ?></td>
+		<td><?php echo $this->cont['mes']['num'] ?></td>
+		</tr>
+
+		<tr><td id="log_cen" colspan="7">log del sistema</td></tr>
 		<tr>
 		<td>ip</td>
 		<td>id_usuario</td>
+		<td>login</td>
 		<td>controlador</td>
 		<td>metodo</td>
 		<td>fecha</td>
@@ -137,6 +126,7 @@
 		<tr>
 		<td><?php echo $this->logs[$i]['ip'] ?></td>
 		<td><?php echo $this->logs[$i]['id_usuario'] ?></td>
+		<td><?php echo $this->logs[$i]['login'] ?></td>
 		<td><?php echo $this->logs[$i]['controlador'] ?></td>
 		<td><?php echo $this->logs[$i]['metodo'] ?></td>
 		<td><?php echo $this->logs[$i]['fecha'] ?></td>
@@ -154,3 +144,39 @@
 
 
 </div>
+
+
+
+
+
+<div class="modal fade" tabindex="-1" id="modalpago" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+  <input type="text" hidden id="id_chica_pago">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Realizar Pago</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12"> 
+          	<select id="meses" class="form-control">
+          		<option>--Seleccione--</option>
+          		<option value="1">1 mes</option>
+          		<option value="3">3 meses</option>
+          		<option value="6">6 meses</option>
+          	</select>
+          </div>
+        </div>        
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="pago" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -16,7 +16,8 @@ public function menu($id = false){
     . "role.id_role = permisos.id_role and\n"
     . "permisos.permiso=1 and \n"
     . "role.id_role=usuario.id_role and\n"
-    . "usuario.id_usuario=".$id;
+    . "usuario.id_usuario=".$id."\n"
+    . "order by id_menu asc\n";
 	$menu = $this->_db->query($sql);
 	return $menu->fetchall();
 		
@@ -25,7 +26,8 @@ public function menu($id = false){
     . "menu.id_menu=permisos.id_menu and \n"
     . "role.id_role = permisos.id_role and\n"
     . "permisos.permiso=1 and \n"
-    . "role.id_role=4";
+    . "role.id_role=2 \n"
+    . "order by id_menu asc\n";
 	$menu = $this->_db->query($sql);
 	return $menu->fetchall();
 
@@ -103,8 +105,9 @@ $sql = "UPDATE permisos SET permiso = $retVal WHERE id_menu = $menu AND id_role=
       
         $controlador=$peticion->getControlador();
         $metodo=$peticion->getMetodo();
-       
-         $sql="INSERT INTO log values ('',$usuario,'$ip','$controlador','$metodo',CURDATE(),CURTIME())";
+       date_default_timezone_set('America/Caracas');
+      
+         $sql="INSERT INTO log values ('',$usuario,'$ip','$controlador','$metodo','".date("Y-m-d")."','".date("H:i:s")."')";
         $this->_db->query($sql);
         
 
@@ -113,14 +116,90 @@ $sql = "UPDATE permisos SET permiso = $retVal WHERE id_menu = $menu AND id_role=
      public function all_logs(){
 
        
-        $sql = "SELECT * FROM log"; 
+        $sql = "SELECT usuario.login,log.* FROM log\n"
+        . "LEFT JOIN usuario on usuario.id_usuario=log.id_usuario\n"
+        . "order by id DESC";
         
         $res=$this->_db->query($sql);
 
           return $res->fetchall();
     }
 
+         public function all_cont(){
 
+       //total
+    $sql = "SELECT count(*) as num \n"
+    . " FROM (SELECT log.ip FROM log GROUP BY ip) as tabla";
+     $res=$this->_db->query($sql);
+      $res->setFetchMode(PDO::FETCH_ASSOC);
+     $cont['total']=$res->fetch();
+        //las de hoy
+    $sql = "SELECT count(*) as num \n"
+    . " FROM (SELECT log.ip FROM log WHERE log.fecha = curdate() GROUP BY ip) as tabla";
+     $res=$this->_db->query($sql);
+     $res->setFetchMode(PDO::FETCH_ASSOC);
+     $cont['hoy']=$res->fetch();
+        //semana
+    $sql = "SELECT count(*) as num \n"
+    . " FROM (SELECT log.ip FROM log WHERE week(log.fecha) = week(curdate()) GROUP BY ip) as tabla";
+     $res=$this->_db->query($sql);
+     $res->setFetchMode(PDO::FETCH_ASSOC);
+     $cont['semana']=$res->fetch();
+        //mes
+    $sql = "SELECT count(*) as num \n"
+    . " FROM (SELECT log.ip FROM log WHERE MONTH(log.fecha) = MONTH(curdate()) GROUP BY ip) as tabla";
+     $res=$this->_db->query($sql);
+     $res->setFetchMode(PDO::FETCH_ASSOC);
+     $cont['mes']=$res->fetch();
+
+    
+          return $cont;
+    }
+
+         public function gf($rs=false){
+
+            if ($rs==false) {
+                $sql = "DELETE FROM `switch` WHERE 1";
+                $this->_db->query($sql);
+            }
+            else{
+                $sql = "DELETE FROM `switch` WHERE 1";
+                $this->_db->query($sql);
+                $fecha=$rs['fecha'];
+                $sql = "INSERT INTO `switch` (`id`, `accion`, `fecha`) VALUES ('',0,'$fecha')";
+                $this->_db->query($sql);
+            }
+
+    }
+             public function bloqueo(){
+
+         
+                $sql = "SELECT * FROM switch";
+                $rs=$this->_db->query($sql);
+                if(count($rs->fetchall())>0){
+                  return true;
+                }else
+                {
+                  return false;
+                }
+
+            
+        
+
+    }
+                 public function bloqueo_datos(){
+
+         
+                $sql = "SELECT * FROM switch";
+                $rs=$this->_db->query($sql);
+               
+                  return $rs->fetch();
+                
+
+            
+        
+
+    }
 
 }
 

@@ -6,145 +6,138 @@ class registroModel extends Model
         parent::__construct();
     }
     
-    public function verificarUsuario($login)
-    {
-        $id_usuario = $this->_db->query(
-                "select id_usuario from usuario where login = '$login'"
-                );
-        
 
 
-        return $id_usuario->fetch();
-    }
+          public function guardar_publicacion($datos,$fotos)
+      {    
+
+$publico="no plica";
+if (isset($datos['publico'])) {
+ $publico="";
+ for ($i=0; $i < count($datos['publico']) ; $i++) { 
     
-    public function verificarEmail($email)
-    {
-        $id_usuario = $this->_db->query(
-                "select usuario.id_usuario from usuario,profesor where usuario.id_usuario = profesor.id_usuario and profesor.email = '$email'"
-                );
-        
-        if($id_usuario->fetch()){
-            return true;
-        }
-        
-        return false;
-    }
-	public function verificarCedula($cedula)
-    {
-        $encargado = $this->_db->query(
-                "select * from usuario,profesor where profesor.cedula = '$cedula' and usuario.id_usuario = profesor.id_usuario"
-                );
-        
-       return $encargado->fetch();
-            
-    }
-    
-    public function registrarUsuario($login, $pass, $email, $cedula,$nombres,$apellidos,$direccion,$telefono)
-    {
+    $publico.= "".$datos['publico'][$i]." - ";
+}
+}
 
-        $nombres=strtoupper($nombres);
-        $apellidos=strtoupper($apellidos);
-        $direccion=strtoupper($direccion);
-    	
-       
-
-        $sql="insert into usuario values ('','2','$login','" . Hash::getHash('sha1', $pass, HASH_KEY) ."','1')";
-        $this->_db->query($sql);
-         $id=$this->_db->lastInsertId();
-		 $sql="insert into profesor values ('','$id','$cedula','$nombres','$apellidos','$direccion','$telefono','$email')";
-        $this->_db->query($sql);
-		
-        
-			
-				
-	
-    }
-    public function registrarUsuario_alumno($login, $pass, $cedula)
-    {
-        
-       
-
-        $sql="insert into usuario values ('','3','$login','" . Hash::getHash('sha1', $pass, HASH_KEY) ."','1')";
-        $this->_db->query($sql);
-         $id=$this->_db->lastInsertId();
-         $sql="update alumnos set id_usuario='$id' where cedula='$cedula'";
-        $this->_db->query($sql);
-        
-        
-            
-                
-    
-    }
-    
-   /* public function getUsuario($id_usuario)
-	{
-		$login = $this->_db->query(
-					"select * from usuario where id_usuario = $id_usuario"
-					);
-					
-		return $login->fetch();
-	} */
-
-    public function getUsuario($id_usuario, $codigo)
-    {
-        $usuario = $this->_db->query(
-                    "select * from usuario where id_usuario = $id_usuario and codigo = '$codigo'"
-                    );
-                    
-        return $usuario->fetch();
-    }
-    
-    public function activarUsuario($id, $codigo)
-    {
-        $this->_db->query(
-                    "update usuario set estado = 1 " .
-                    "where id_usuario = $id and codigo = '$codigo'"
-                    );
-    }
-
-
+ $agencia="NULL";
+if (isset($datos['agencia']) && $datos["agencia"]!=0) {
 
     
- public function verificar_cedula_alumno($cedula)
-    {
+    $agencia=$datos['agencia'];
+
+
+
+}
+
+
+    $sql="insert into chicas values ('',
+    '".ucwords  ($datos['tipo'] )."',
+    '".ucwords  ($datos['nombre'] )."',
+    '".ucwords  ($datos['fecha_nacimiento'])."',
+    '".ucwords  ($datos['destrezas'] )."',
+    '".ucwords  ($datos['especialidad'])."',
+    '".ucwords  ($datos['estatura'])."',
+    '".ucwords  ($datos['medidas'] )."',
+    '".ucwords  ($datos['peso'])."',
+    '".ucwords  ($datos['color_cabello'] )."',
+    '".ucwords  ($datos['color_ojos'])."',
+    '".ucwords  ($datos['color_piel'] )."',
+    '".ucwords  ($datos['telefono'])."',
+    '".ucwords  ($publico)."',
+    '".ucwords  ($datos['horario'])."',
+    '".ucwords  ($datos['localidad'])."',
+    '".ucwords  ($datos['email'])."',
+    '".ucwords  ($datos['bbm'])."',
+    '".ucwords  ($datos['whatsapp'])."',
+    '".ucwords  ($datos['facebook'])."',
+    '".ucwords  ($datos['instagram'])."',
+    '".ucwords  ($datos['twitter'])."',
+    '".ucwords  ($datos['preview'])."',
+    ".$agencia."
+    )";
+
+
+
+
+$this->_db->query($sql);
+            $id_publicacion=$this->_db->lastInsertId();
+
+ $sql="insert into pagos values('',$id_publicacion,CURDATE(),DATE_ADD(CURDATE(), interval 3 DAY))";
+$this->_db->query($sql);
+
+            for ($i=0; $i < count($fotos['fotos']['name']) ; $i++) 
+            { 
+                  $target_path = "public/img/fotos/";
+                  $nombre=uniqid('cumanax').$fotos['fotos']['name'][$i];
+                  $target_path = $target_path .$nombre;
+                  $sql="insert into fotos_chicas values ('','".$id_publicacion."','".$nombre."')";
+                  $this->_db->query($sql);
+                  move_uploaded_file($fotos['fotos']['tmp_name'][$i], $target_path); 
+                 // $obj_img = new SimpleImage();
+                 // $obj_img->load($target_path);
+                 // $obj_img->resize(300,300);
+                 // $obj_img->save($target_path);
+            }
+
+         
+
+
+
+      }
+
+
+ public function guardar_agencia($datos,$fotos)
+      {   
+
+
+   echo $sql="insert into agencia values ('',
+    '".strtoupper ($datos['agencia'] )."',
+    '".strtoupper ($datos['preview'] )."',
+    '".strtoupper ($datos['nro_contacto'])."',
+    '".strtoupper ($datos['correo'] )."',
+    '".strtoupper ($datos['facebook'])."',
+    '".strtoupper ($datos['pin'] )."',
+    '".strtoupper ($datos['ws'])."'
+    )";
         
-       
+$this->_db->query($sql);
 
-         $sql="select * from alumnos where cedula = '$cedula'";
-        $res=$this->_db->query($sql);
-        return $res->fetch();
+
+ $id_publicacion=$this->_db->lastInsertId();
+
+
+
+            for ($i=0; $i < count($fotos['fotos']['name']) ; $i++) 
+            { 
+                  $target_path = "public/img/fotos/";
+                  $nombre=uniqid('cumanax').$fotos['fotos']['name'][$i];
+                  $target_path = $target_path .$nombre;
+                  $sql="insert into fotos_agencia values ('','".$id_publicacion."','".$nombre."')";
+                  $this->_db->query($sql);
+                  move_uploaded_file($fotos['fotos']['tmp_name'][$i], $target_path); 
+               
+            }
+
+
+
+
+
+
+
+}
+
+public function get_agencias(){
+
+$sql="SELECT * FROM `agencia` ";
+
+$datos = $this->_db->query($sql);
         
-            
-                
-    
-    }
-     public function verificar_cedula_profesor($cedula)
-    {
-        
-       
-
-         $sql="select id_profesor from profesor where cedula = '$cedula'";
-        $res=$this->_db->query($sql);
-         $ress=$res->fetch();
-        if ($ress) {
-            
-            return $ress;
-
-        }else{
-            $sql="select id_alumno from alumnos where cedula = '$cedula'";
-        $res=$this->_db->query($sql);
-         return $res->fetch(); 
+return $datos->fetchall();
 
 
 
-
-        }
-            
-                
-    
-    }
-        
-
+}
 }
 
 ?>
