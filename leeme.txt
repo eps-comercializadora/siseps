@@ -67,3 +67,115 @@ modelos:
 -------------------------------------------------------------------------------------------
 
 
+js:
+-----------------------------------------------------------------------------
+manejador de evento 1 
+
+
+event=[click, keyup, keydown, keypress, change];
+$(document).on('event', 'selector', function() {  
+------accion
+});
+-----------------------------------------------------------------------------
+manejador de evento 2 
+
+function mifuncion(){}
+
+
+-----------------------------------------------------------------------------
+ajax:
+
+$.get('ruta archivo php',{
+	
+	parametro1: valor1,
+	parametro2: valor2 
+
+}, function(data) {
+		
+		success
+
+	},"json");
+
+----------------------------------------------------------------------------------------------
+
+librerias js
+
+// generados de codigo QR 
+//---------------------------------------------------------------------
+//
+// QR Code Generator for JavaScript
+//
+// Copyright (c) 2009 Kazuhiko Arase
+//
+// URL: http://www.d-project.com/
+//
+// Licensed under the MIT license:
+//	http://www.opensource.org/licenses/mit-license.php
+//
+// The word 'QR Code' is registered trademark of
+// DENSO WAVE INCORPORATED
+//	http://www.denso-wave.com/qrcode/faqpatent-e.html
+//
+//---------------------------------------------------------------------
+
+la funcion create_qrcode debuelve una etiqueta img la cuan puede ser incertada en cualquira parte del documento
+
+create_qrcode("123456");
+
+ejemplo:
+
+$(document).on('click', '#Generar_qr', function() {
+	
+	document.getElementById('qr').innerHTML = create_qrcode("123456");
+
+
+
+});
+
+cuando detectamos el evento click en el elemento Generar_qr, disparamos las funcion que se encarga de incertar la etiqueda img con la imagen qr que codifica el "123456" en el elemento "qr";
+
+
+
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+
+
+// scaner de codigo QR 
+/*!
+ * jQuery Plugin WebCodeCam-1.0.0
+ * Author: Tóth András
+ * Web: http://atandrastoth.co.uk
+ * email: atandrastoth@gmail.com
+ * Licensed under the MIT license
+ */
+/*
+Included:
+barcode decoder (DecoderWorker.js) -> https://github.com/EddieLa/BarcodeReader/blob/master/src/DecoderWorker.js
+qr-decoder (qrcodelib.js) -> https://github.com/LazarSoft/jsqrcode
+*/
+
+
+la funcion scaner_qr('.xxx'); 
+
+recibe como parametro el selector donde se montara la img de camara que leera el codigo de barra en cuestion
+
+salida rellena una variable gloval llamada "resTextQR" con el texto que lea del codigo QR.
+
+ejemplo:
+
+scaner_qr('.xxx');
+
+.xxx si es una clase
+#xxx si es un id
+
+respuesta:
+
+monta la camara en el id o clases especificada y comienza un buche para determinar la lectura 
+
+salida:
+
+resTextQR= texto de la QR;
+
+
+--------------------------------------------------------------------------------------------------------------

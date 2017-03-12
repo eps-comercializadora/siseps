@@ -14,18 +14,20 @@
     <link href="<?php echo BASE_URL; ?>public/css/alertify.bootstrap3.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo BASE_URL; ?>public/css/alertify.core.css" rel="stylesheet" type="text/css" /> 
     <link href="<?php echo BASE_URL; ?>public/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" /> 
-    <link href="<?php echo BASE_URL; ?>public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo BASE_URL; ?>public/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo BASE_URL; ?>public/css/jquery-ui.css" rel="stylesheet" type="text/css" /> 
     <link href="<?php echo BASE_URL; ?>public/css/jquery-ui.structure.css" rel="stylesheet" type="text/css" /> 
     <link href="<?php echo BASE_URL; ?>public/css/jquery-ui.theme.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo BASE_URL; ?>public/css/default_modal.css" rel="stylesheet" type="text/css" /> 
     <link href="<?php echo BASE_URL; ?>public/css/component_modal.css" rel="stylesheet" type="text/css" />
+     <link href="<?php echo BASE_URL; ?>public/css/barcode-laser.css" rel="stylesheet" type="text/css" />
     
     <!-- Plugin CSS -->
     <!-- Custom CSS -->
     <link href="<?php echo $_layoutParams['ruta_css']; ?>layout.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $_layoutParams['ruta_css']; ?>botones.css" rel="stylesheet" type="text/css" />
-    
+    <link href="<?php echo $_layoutParams['ruta_css']; ?>estilos_varios.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $_layoutParams['ruta_css']; ?>formulario.css" rel="stylesheet" type="text/css" />
     <!-- CSS view.. -->
     <?php if(isset($_layoutParams['css']) && count($_layoutParams['css'])): ?>
         <?php for($i=0; $i < count($_layoutParams['css']); $i++): ?>

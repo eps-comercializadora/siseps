@@ -10,24 +10,24 @@
 
 
  <!-- Publicos -->
+
+
 <script src="<?php echo BASE_URL; ?>public/js/jquery.js" type="text/javascript"></script>
 <script src="<?php echo BASE_URL; ?>public/js/alertify.min.js" type="text/javascript"></script>
 <script src="<?php echo BASE_URL; ?>public/js/config.js" type="text/javascript"></script>
 <script src="<?php echo BASE_URL; ?>public/js/jquery.validationEngine.js" type="text/javascript"></script>
 <script src="<?php echo BASE_URL; ?>public/js/jquery.validationEngine-es.js" type="text/javascript"></script>
 <script src="<?php echo BASE_URL; ?>public/js/jquery-ui.js" type="text/javascript"></script>
-<!-- modal plugin-->
+<script src="<?php echo BASE_URL; ?>public/js/qrcodelib.js" type="text/javascript"></script>
+<script src="<?php echo BASE_URL; ?>public/js/WebCodeCam.js" type="text/javascript"></script>
+<script src="<?php echo BASE_URL; ?>public/js/qr_framework.js" type="text/javascript"></script>
+<script src="<?php echo BASE_URL; ?>public/js/qrcode.js" type="text/javascript"></script>
 <script src="<?php echo BASE_URL; ?>public/js/modalEffects.js" type="text/javascript"></script>
 <script src="<?php echo BASE_URL; ?>public/js/classie.js" type="text/javascript"></script>
 <script src="<?php echo BASE_URL; ?>public/js/modernizr.custom.js" type="text/javascript"></script>
 <script src="<?php echo BASE_URL; ?>public/js/cssParser.js" type="text/javascript"></script>
 <script src="<?php echo BASE_URL; ?>public/js/clockCountdown.js" type="text/javascript"></script>
-<!--
-<script src="<?php echo BASE_URL; ?>public/js/css-filters-polyfill.js" type="text/javascript"></script>
--->
-
-<!-- Bootstrap Core JavaScript -->
- <script src="<?php echo BASE_URL; ?>public/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?php echo BASE_URL; ?>public/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- Plugin JavaScript -->
 <!-- Custom Theme JavaScript -->
 <!--  Js del layout  -->
