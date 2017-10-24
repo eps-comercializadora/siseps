@@ -40,7 +40,7 @@ $(document).on("click", "#btn_actv", function(){
 			accion: accion
 			
 			},function(){
-				//document.location=base_url+"app";		
+				document.location=base_url+"app";		
 	           });
 
 
