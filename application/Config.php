@@ -25,7 +25,7 @@ define('SESSION_TIME', 1000000);
 define('HASH_KEY', '4f6a6d832be79');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'xxx');
 define('DB_NAME', 'siseps');
 define('DB_CHAR', 'utf8');
 
