@@ -28,6 +28,7 @@ class Request
         
         if(!$this->_controlador){
             $this->_controlador = DEFAULT_CONTROLLER;
+
         }
         
         if(!$this->_metodo){
@@ -41,7 +42,9 @@ class Request
     
     public function getControlador()
     {
+        
         return $this->_controlador;
+
     }
     
     public function getMetodo()
