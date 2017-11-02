@@ -19,6 +19,7 @@ class principalController extends Controller
 			$this->_view->setJs(array('js'));
 			$this->_view->setCss(array('css'));
         		$this->_view->titulo = 'principal';
+        		$this->_view->numero_emp=$this->_index->count_emp();
 			$this->_view->renderizar('index');
 							
 			
