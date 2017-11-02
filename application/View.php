@@ -8,10 +8,10 @@ class View
     public $menu;
     
     public function __construct(Request $peticion) {
+        print_r($peticion);
         $this->_controlador = $peticion->getControlador();
         $this->_js = array();
         $this->_css = array();
-  
 
     }
     
@@ -43,6 +43,8 @@ class View
         );
         
         $rutaView = ROOT . 'site'.DS.'views' . DS . $this->_controlador . DS . $vista . '.phtml';
+
+   
         
 
         if(is_readable($rutaView)){
