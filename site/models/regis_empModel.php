@@ -39,7 +39,7 @@ return  $datos->fetchall();
 
 public function guardar_emp($datos){
 
-$sql="INSERT INTO `empresa`  VALUES ('', '".$datos['rif']."', '".$datos['razon_social']."', '".$datos['nro_registro']."', '".$datos['municipio']."', '".$datos['parroquia']."', '".$datos['direccion']."', '".$datos['poseec']."', '".$datos['poseep']."');";
+$sql="INSERT INTO `empresa`  VALUES ('', '".$datos['rif']."', '".$datos['razon_social']."', '".$datos['nro_registro']."', '".$datos['tipo']."', '".$datos['municipio']."', '".$datos['parroquia']."', '".$datos['direccion']."', '".$datos['poseec']."', '".$datos['poseep']."');";
 
  $this->_db->query($sql);
       

@@ -18,4 +18,17 @@ public function count_emp(){
     return $datos->fetch(); 
 }
 
+public function numero_per(){
+
+$sql="SELECT COUNT(*) as numero FROM `persona`";
+
+ $datos=$this->_db->query($sql);
+      
+return $datos->fetch();
+
+
+
+
+}
+
 }?>

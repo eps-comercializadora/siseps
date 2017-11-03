@@ -20,6 +20,7 @@ class principalController extends Controller
 			$this->_view->setCss(array('css'));
         		$this->_view->titulo = 'principal';
         		$this->_view->numero_emp=$this->_index->count_emp();
+        		$this->_view->numero_per=$this->_index->numero_per();
 			$this->_view->renderizar('index');
 							
 			

@@ -8,7 +8,7 @@ class View
     public $menu;
     
     public function __construct(Request $peticion) {
-        print_r($peticion);
+       
         $this->_controlador = $peticion->getControlador();
         $this->_js = array();
         $this->_css = array();

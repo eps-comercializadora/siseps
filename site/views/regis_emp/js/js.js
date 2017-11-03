@@ -1,5 +1,24 @@
 $(document).ready(function(){
 
+$('#rif').addClass('validate[required]');
+$('#razon_social').addClass('validate[required]');
+$('#nro_de_registro').addClass('validate[required]');
+$('#tipo').addClass('validate[required]');
+$('#municipio').addClass('validate[required]');
+$('#parroquia').addClass('validate[required]');
+$('#direccion').addClass('validate[required]');
+$('#poseep').addClass('validate[required]');
+$('#poseec').addClass('validate[required]');
+
+
+
+$('#agregar').validationEngine();
+
+//$('#agregar').validationEngine('validate');
+				
+			
+
+
 //carga de select dinamico
 $(document).on('change', '#municipio', function() {
 	
@@ -18,7 +37,7 @@ $(document).on('change', '#municipio', function() {
 
 			var html=""
 
-			html+="<option>-selecione-</option>"
+			html+="<option value=''>-seleccione-</option>"
 
 			for (var i = 0; i < data.length; i++) {
 				
@@ -30,23 +49,18 @@ $(document).on('change', '#municipio', function() {
 
 			},"json");
 
-
-
-
-
-
-
 });
 
 $(document).on('click', '#guardar', function() {
 	
+if($('#agregar').validationEngine('validate')){
 
-
-		$.get(base_url+'regis_emp/guardar_emp',{
+$.get(base_url+'regis_emp/guardar_emp',{
 
 			rif:$("#rif").val(),
 			razon_social:$("#razon_social").val(),
 			nro_registro:$("#nro_de_registro").val(),
+			tipo:$("#tipo").val(),
 			municipio:$("#municipio").val(),
 			parroquia:$("#parroquia").val(),
 			direccion:$("#direccion").val(),
@@ -54,11 +68,31 @@ $(document).on('click', '#guardar', function() {
 			poseec:$("#poseec").val()
 
 		},function() {
-		
+		location.href=base_url;
 		});
 
 
+}
+
+		
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
