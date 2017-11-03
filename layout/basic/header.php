@@ -84,7 +84,10 @@
 
     <div class="container-fluid fondo">
 
-    
+    <div id="logos" class="col-md-10 col-md-offset-1">
+    <img src="<?php echo BASE_URL ?>public/img/formato.png" class="img img-responsive" >
+    </div>
+    <div id="linea" class="row"></div>
 
     <div class="row">
     

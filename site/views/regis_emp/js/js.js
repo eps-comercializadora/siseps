@@ -52,7 +52,7 @@ $(document).on('change', '#municipio', function() {
 });
 
 $(document).on('click', '#guardar', function() {
-	
+	alert();
 if($('#agregar').validationEngine('validate')){
 
 $.get(base_url+'regis_emp/guardar_emp',{

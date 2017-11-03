@@ -8,3 +8,18 @@
 	padding-top: 6px;
 	color: blueviolet;
 }
+#logos {
+	margin-top: 34px;
+}
+
+#linea {
+	border-bottom: 3px solid #e6e6e6;
+}
+#titulo {
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+	font-size: 24px;
+	text-transform: full-width;
+	color: #898989;
+}

@@ -27,7 +27,7 @@ return $datos->fetchall();
 
 public function guardar_per($datos){
 
-$sql="INSERT INTO `persona`  VALUES ('', '".$datos['productora']."', '".$datos['cedula']."', '".$datos['rif']."', '".$datos['nombres']."', '".$datos['apellidos']."', '".$datos['telefono']."', '".$datos['direccion']."', '".$datos['codigo']."', '".$datos['serial']."', '".$datos['certificado_medico']."');";
+$sql="INSERT INTO `persona`  VALUES (NULL, '".$datos['productora']."', '".$datos['cedula']."', '".$datos['rif']."', '".$datos['nombres']."', '".$datos['apellidos']."', '".$datos['telefono']."', '".$datos['direccion']."', '".$datos['codigo']."', '".$datos['serial']."', '".$datos['certificado_medico']."');";
 
  $this->_db->query($sql);
       
