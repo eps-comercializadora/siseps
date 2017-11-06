@@ -67,7 +67,7 @@ var $PDFVersion;         // PDF version number
 *******************************************************************************/
 
 
-function FPDF($orientation='P', $unit='mm', $size='letter')
+function FPDF($orientation='L', $unit='mm', $size='letter')
 {
 	// Some checks
 	$this->_dochecks();
@@ -367,6 +367,9 @@ function AddPage($orientation='', $size='')
 
 function Header()
 {
+
+	$this->Image(BASE_URL."public/img/formato.png",20,5,($this->w)-40,0,'png');
+
  $week_days = array("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"); 
         $monts = array("","Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"); 
         $week_days_now = date("w"); 
@@ -380,13 +383,13 @@ function Header()
         // Arial italic 8 
         $this->SetFont('Arial','',6); 
         // Número de página 
-        $this->setx(($this->w)-60);
+        $this->setx(50);
+        $this->sety(30);
          $this->Cell(50,4,$date,0,0,'L'); 
         $this->ln();      
-        $this->setx(($this->w)-60);
-        $this->Cell(40,4,'Pagina :'.$this->PageNo(),0,0,'L');
-         $this->setx(10);
-        $this->Cell(40,4,'KEIKO C.A.',0,0,'L');
+        
+        //$this->Cell(40,4,'Pagina :'.$this->PageNo(),0,0,'L');
+        
    
         $this->ln();  
 

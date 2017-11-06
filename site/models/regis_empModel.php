@@ -50,6 +50,36 @@ $sql="INSERT INTO `empresa`  VALUES (NULL, '".$datos['rif']."', '".$datos['razon
 
 }
 
+public function cargar($id){
+
+
+ $sql="SELECT empresa.*,parroquias.parroquia as parroquiaa,municipios.municipio as municipioo FROM empresa,parroquias,municipios where id_emp=$id and empresa.municipio=municipios.id_municipio and parroquias.id_parroquia=empresa.parroquia ";
+
+$datos = $this->_db->query($sql);
+      $datos->setFetchMode(PDO::FETCH_ASSOC);
+$this->datos_emp = $datos->fetchall();
+
+//return  $datos->fetchall();
+
+
+
+}
+
+public function cargar_per(){
+
+
+$sql="SELECT * FROM persona where id_empresa='".$this->datos_emp[0]['id_emp']."' ";
+
+$datos = $this->_db->query($sql);
+      $datos->setFetchMode(PDO::FETCH_ASSOC);
+$this->datos_pers = $datos->fetchall();
+
+//return  $datos->fetchall();
+
+
+
+}
+
 
 
 }
