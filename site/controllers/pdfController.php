@@ -28,21 +28,21 @@ class pdfController extends Controller
 			$this->_pdf->SetFont('Arial','B',12);
 
 			QRcode::png($this->modelo->datos_emp[0]['id_emp'],"public/img/qr/".$this->modelo->datos_emp[0]['id_emp'].".png",'H',32,12);
-			$this->_pdf->Image(BASE_URL."/public/img/qr/".$this->modelo->datos_emp[0]['id_emp'].".png",183,82,30);
+			$this->_pdf->Image(BASE_URL."/public/img/qr/".$this->modelo->datos_emp[0]['id_emp'].".png",178,60,45);
 
 
 
 			$this->_pdf->SetLineWidth(0.5);
-			$this->_pdf->Line(10,70 ,($this->_pdf->w)-20, 70);
-			$this->_pdf->Line(10,70 ,10,115 );
-			$this->_pdf->Line(10,115 ,($this->_pdf->w)-20,115 );
-			$this->_pdf->Line(($this->_pdf->w)-20, 70 ,($this->_pdf->w)-20,115 );
-			$this->_pdf->Line(($this->_pdf->w)/2, 70 ,($this->_pdf->w)/2,115 );
+			$this->_pdf->Line(10,60 ,($this->_pdf->w)-20, 60);
+			$this->_pdf->Line(10,60 ,10,100 );
+			$this->_pdf->Line(10,100 ,($this->_pdf->w)-20,100 );
+			$this->_pdf->Line(($this->_pdf->w)-20, 60 ,($this->_pdf->w)-20,100 );
+			$this->_pdf->Line(($this->_pdf->w)/2, 60 ,($this->_pdf->w)/2,100 );
 			$this->_pdf->SetLineWidth(0.2);
 
 			$this->_pdf->SetFont('Arial','B',12);
 			$this->_pdf->Cell(($this->_pdf->w)-20,8, utf8_decode('PLANILLA DE REGISTRO'),0,1,'C');
-			$this->_pdf->Ln(15);
+			$this->_pdf->Ln(5);
 			$this->_pdf->SetFont('Arial','',10);
 		
 			$this->_pdf->SetFont('Arial','B',12);
@@ -50,26 +50,34 @@ class pdfController extends Controller
 			$this->_pdf->Cell(190,4, utf8_decode("DATOS DE LA EMPRESA PRODUCTORA"),0,1,'L');
 			$this->_pdf->Ln(8);
 			$this->_pdf->SetFont('Arial','',8);
-			$this->_pdf->Cell(50,4, utf8_decode('RIF'),0,0,'L');
-			$this->_pdf->Cell(113,4, utf8_decode(": ".$this->modelo->datos_emp[0]['rif']),0,0,'L');
+			$this->_pdf->Cell((($this->_pdf->w-20)/2)+33,4, utf8_decode('RAZON SOCIAL: '.$this->modelo->datos_emp[0]['razon_social']),0,0,'L');
 			$this->_pdf->Cell(50,4, utf8_decode('Codigo QR'),1,1,'C');
+			$this->_pdf->Cell(($this->_pdf->w-20)/2,4, utf8_decode('DIRECCION: '.$this->modelo->datos_emp[0]['direccion']),0,1,'L');
+			$this->_pdf->Cell(($this->_pdf->w-20)/4,4, utf8_decode('RIF:'.$this->modelo->datos_emp[0]['rif']),0,0,'L');
+			$this->_pdf->Cell((($this->_pdf->w-20)/4),4, utf8_decode('NUMERO DE REGISTRO:'.$this->modelo->datos_emp[0]['nro_de_registro']),0,1,'L');
+			
+			
 
-			$this->_pdf->Cell(50,4, utf8_decode('RAZON SOCIAL '),0,0,'L');
-			$this->_pdf->Cell(40,4, utf8_decode(": ".$this->modelo->datos_emp[0]['razon_social']),0,1,'L');
-			$this->_pdf->Cell(50,4, utf8_decode('NUMERO DE REGISTRO'),0,0,'L');
-			$this->_pdf->Cell(40,4, utf8_decode(": ".$this->modelo->datos_emp[0]['nro_de_registro']),0,1,'L');
-			$this->_pdf->Cell(50,4, utf8_decode('TIPO DE PRODUCTOR '),0,0,'L');
-			$this->_pdf->Cell(40,4, utf8_decode(": ".$this->modelo->datos_emp[0]['tipo']),0,1,'L');
-			$this->_pdf->Cell(50,4, utf8_decode('MUNICIPIO'),0,0,'L');
-			$this->_pdf->Cell(40,4, utf8_decode(": ".$this->modelo->datos_emp[0]['municipioo']),0,1,'L');
-			$this->_pdf->Cell(50,4, utf8_decode('PARROQUIA '),0,0,'L');
-			$this->_pdf->Cell(40,4, utf8_decode(": ".$this->modelo->datos_emp[0]['parroquiaa']),0,1,'L');
-			$this->_pdf->Cell(50,4, utf8_decode('DIRECCION '),0,0,'L');
-			$this->_pdf->Cell(40,4, utf8_decode(": ".$this->modelo->datos_emp[0]['direccion']),0,1,'L');
-			$this->_pdf->Cell(50,4, utf8_decode('POSEE CERTIFICADO DEL INCES '),0,0,'L');
-			$this->_pdf->Cell(40,4, utf8_decode(": ".$this->modelo->datos_emp[0]['poseec']),0,1,'L');
-			$this->_pdf->Cell(50,4, utf8_decode('PESEE PERMISO SANITARIO '),0,0,'L');
-			$this->_pdf->Cell(40,4, utf8_decode(": ".$this->modelo->datos_emp[0]['poseep']),0,1,'L');
+			
+			
+			
+			$this->_pdf->Cell(($this->_pdf->w-20)/4,4, utf8_decode('TIPO DE PRODUCTOR: '.$this->modelo->datos_emp[0]['tipo']),0,0,'L');
+		
+			$this->_pdf->Cell(($this->_pdf->w-20)/4,4, utf8_decode('MUNICIPIO: '.$this->modelo->datos_emp[0]['municipioo']),0,1,'L');
+
+
+
+			$this->_pdf->Cell(($this->_pdf->w-20)/4,4, utf8_decode('PARROQUIA: '.$this->modelo->datos_emp[0]['parroquiaa']),0,0,'L');
+
+			
+
+			
+			$this->_pdf->Cell(($this->_pdf->w-20)/4,4, utf8_decode('POSEE CERTIFICADO DEL INCES: '.$this->modelo->datos_emp[0]['poseec']),0,1,'L');
+
+			
+			$this->_pdf->Cell(($this->_pdf->w-20)/4,4, utf8_decode('PESEE PERMISO SANITARIO: '.$this->modelo->datos_emp[0]['poseep']),0,1,'L');
+			
+			
 		
 
 
@@ -77,9 +85,9 @@ class pdfController extends Controller
 
 
 			$this->_pdf->SetFont('Arial','B',12);
-			$this->_pdf->Ln(8);
+			$this->_pdf->Ln(15);
 			$this->_pdf->Cell(190,4, utf8_decode("INTEGRANTES Y RESPONSABLES"),0,1,'L');
-			$this->_pdf->Ln(8);
+			$this->_pdf->Ln(3);
 			$this->_pdf->SetFont('Arial','',8);
 
 			

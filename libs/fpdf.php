@@ -400,6 +400,8 @@ function Header()
 
 function Footer()
 {
+
+	$this->Image(BASE_URL."public/img/pie.png",0,$this->h-30,($this->w),0,'png');
 }
 
 function PageNo()

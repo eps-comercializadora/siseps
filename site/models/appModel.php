@@ -85,7 +85,7 @@ $sql = "SELECT COUNT(permisos.id_permisos) as numero FROM permisos WHERE id_menu
 $rs=$datos->fetch();
     if ($rs['numero']==0) {
 
-        $sql="INSERT INTO permisos values('',$menu,$rol,$retVal)";
+        $sql="INSERT INTO permisos values(NULL,$menu,$rol,$retVal)";
         $this->_db->query($sql);
     }else{
 
