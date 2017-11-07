@@ -7,7 +7,9 @@ class pdfController extends Controller
     public function __construct() {
         parent::__construct();
         $this->getLibrary('fpdf');
+        $this->getLibrary('qr/qrlib');
 		$this->modelo=$this->loadModel('regis_emp');
+		
         $this->_pdf = new fpdf;
     }
     
@@ -16,13 +18,19 @@ class pdfController extends Controller
     public function comprobante_registro()
     {
 
+			
+
     		$this->modelo->cargar($_GET['id']);
     		$this->modelo->cargar_per();
 			//print_r($this->modelo);
 
 			$this->_pdf->AddPage();
 			$this->_pdf->SetFont('Arial','B',12);
-			$this->_pdf->Image('https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl='.BASE_URL.'verificar/'.$this->modelo->datos_emp[0]['id_emp'].'&.png',183,82,30);
+
+			QRcode::png($this->modelo->datos_emp[0]['id_emp'],"public/img/qr/".$this->modelo->datos_emp[0]['id_emp'].".png",'H',32,12);
+			$this->_pdf->Image(BASE_URL."/public/img/qr/".$this->modelo->datos_emp[0]['id_emp'].".png",183,82,30);
+
+
 
 			$this->_pdf->SetLineWidth(0.5);
 			$this->_pdf->Line(10,70 ,($this->_pdf->w)-20, 70);
