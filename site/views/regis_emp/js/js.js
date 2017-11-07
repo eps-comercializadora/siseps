@@ -9,6 +9,7 @@ $('#parroquia').addClass('validate[required]');
 $('#direccion').addClass('validate[required]');
 $('#poseep').addClass('validate[required]');
 $('#poseec').addClass('validate[required]');
+$('#clap').addClass('validate[required]');
 
 
 
@@ -52,9 +53,10 @@ $(document).on('change', '#municipio', function() {
 });
 
 $(document).on('click', '#guardar', function() {
-	alert();
+	
 if($('#agregar').validationEngine('validate')){
 
+	$("guardar").attr('disabled','disabled');
 $.get(base_url+'regis_emp/guardar_emp',{
 
 			rif:$("#rif").val(),
@@ -65,10 +67,13 @@ $.get(base_url+'regis_emp/guardar_emp',{
 			parroquia:$("#parroquia").val(),
 			direccion:$("#direccion").val(),
 			poseep:$("#poseep").val(),
-			poseec:$("#poseec").val()
+			poseec:$("#poseec").val(),
+			clap:$("#clap").val(),
+			codigo_sica:$("#codigo_sica").val()
 
 		},function() {
-		location.href=base_url;
+		alertify.success('registro satisfactorio');
+		location.href=base_url+"regis_emp";
 		});
 
 

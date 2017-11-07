@@ -25,6 +25,7 @@ $(document).on('click', '#guardar', function() {
 		$.get(base_url+'regis_per/guardar_per',{
 
 			cedula:$("#cedula").val(),
+			nacionalidad:$("#nacionalidad").val(),
 			rif:$("#rif").val(),
 			nombres:$("#nombres").val(),
 			apellidos:$("#apellidos").val(),
@@ -36,16 +37,18 @@ $(document).on('click', '#guardar', function() {
 			productora:$("#productora").val()
 
 		},function() {
-		location.href=base_url;
+		alertify.success('registro satisfactorio');
+		location.href=base_url+"regis_per";
 		});
 
  }});
 
-$(document).on('keyup','#cedula',function(){
+$(document).on('blur','#cedula',function(){
 
 	$.get(base_url+'regis_per/buscar',{
 
-			cedula:$("#cedula").val()
+			cedula:$("#cedula").val(),
+			nacionalidad:$("#nacionalidad").val()
 
 		},function(datos) {
 		
@@ -55,7 +58,7 @@ $(document).on('keyup','#cedula',function(){
 
 
 
-    alertify.alert("esta persona esta registrada en "+datos['razon_social']+", y no puede registrarse nuevamente¡¡ ");
+    alertify.alert("esta persona esta registrada en la empresa : "+datos['razon_social']+", y no puede registrarse nuevamente¡¡ ");
 
     $('#rif').val("");
 $('#cedula').val("");

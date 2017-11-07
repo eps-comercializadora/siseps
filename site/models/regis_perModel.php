@@ -27,7 +27,7 @@ return $datos->fetchall();
 
 public function guardar_per($datos){
 
-$sql="INSERT INTO `persona`  VALUES (NULL, '".$datos['productora']."', '".$datos['cedula']."', '".$datos['rif']."', '".$datos['nombres']."', '".$datos['apellidos']."', '".$datos['telefono']."', '".$datos['direccion']."', '".$datos['codigo']."', '".$datos['serial']."', '".$datos['certificado_medico']."');";
+ $sql="INSERT INTO `persona`  VALUES (NULL,'".$datos['nacionalidad']."', '".$datos['productora']."', '".$datos['cedula']."', '".$datos['rif']."', '".$datos['nombres']."', '".$datos['apellidos']."', '".$datos['telefono']."', '".$datos['direccion']."', '".$datos['codigo']."', '".$datos['serial']."', '".$datos['certificado_medico']."');";
 
  $this->_db->query($sql);
       
@@ -36,7 +36,7 @@ $sql="INSERT INTO `persona`  VALUES (NULL, '".$datos['productora']."', '".$datos
 
 public function buscar($datos){
 
-$sql='SELECT *,empresa.razon_social FROM persona,empresa where persona.id_empresa=empresa.id_emp and  cedula="'.$datos['cedula'].'" ';
+ $sql='SELECT *,empresa.razon_social FROM persona,empresa where persona.id_empresa=empresa.id_emp and nacionalidad="'.$datos['nacionalidad'].'" and  cedula="'.$datos['cedula'].'" ';
 
  $datos=$this->_db->query($sql);
       

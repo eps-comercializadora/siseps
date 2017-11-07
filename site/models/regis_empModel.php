@@ -39,7 +39,9 @@ return  $datos->fetchall();
 
 public function guardar_emp($datos){
 
-$sql="INSERT INTO `empresa`  VALUES (NULL, '".$datos['rif']."', '".$datos['razon_social']."', '".$datos['nro_registro']."', '".$datos['tipo']."', '".$datos['municipio']."', '".$datos['parroquia']."', '".$datos['direccion']."', '".$datos['poseec']."', '".$datos['poseep']."');";
+$codigo=uniqid('2');
+
+echo $sql="INSERT INTO `empresa`  VALUES (NULL,'$codigo', '".$datos['rif']."', '".$datos['razon_social']."','".$datos['codigo_sica']."', '".$datos['nro_registro']."','".$datos['clap']."', '".$datos['tipo']."', '".$datos['municipio']."', '".$datos['parroquia']."', '".$datos['direccion']."', '".$datos['poseec']."', '".$datos['poseep']."');";
 
  $this->_db->query($sql);
       
