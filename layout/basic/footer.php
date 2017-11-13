@@ -1,7 +1,15 @@
 </div>
 </div>
 
-<div class=""> <!-- header del pie -->
+<div class="pie_head"> 
+	designed by ING. Angel Charlot. <span class="glyphicon glyphicon-off" aria-hidden="true"> </span> 
+	<br>
+	legna18205@gmail.com. <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> 
+	<br>
+	EPS Comercializadora de alimentos C.A. (departament of informatic)<span class="glyphicon glyphicon-lock" aria-hidden="true"> </span> 
+	<br>
+
+  
 </div>
 <section class=""><!-- contenide del pie -->
 </section>

@@ -23,3 +23,10 @@
 	text-transform: full-width;
 	color: #898989;
 }
+.pie_head {
+	color: #9f9f9f;
+	text-align: center;
+	padding: 50px;
+	border-top: 1px solid #c5c5c5;
+	margin-top: 38px;
+}

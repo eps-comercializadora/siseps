@@ -1,6 +1,5 @@
 <?php
 
-
 class regis_empController extends Controller
 {
 	
@@ -44,6 +43,8 @@ class regis_empController extends Controller
 		$this->_index->guardar_emp($_GET);
 
 	}
+
+
 
 	  
 }

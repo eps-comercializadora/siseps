@@ -27,7 +27,7 @@ class pdfController extends Controller
 			$this->_pdf->AddPage();
 			$this->_pdf->SetFont('Arial','B',12);
 
-			QRcode::png($this->modelo->datos_emp[0]['id_emp'],"public/img/qr/".$this->modelo->datos_emp[0]['id_emp'].".png",'H',32,12);
+			QRcode::png(BASE_URL."verificar/info/".$this->modelo->datos_emp[0]['id_emp'],"public/img/qr/".$this->modelo->datos_emp[0]['id_emp'].".png",'H',32,12);
 			$this->_pdf->Image(BASE_URL."/public/img/qr/".$this->modelo->datos_emp[0]['id_emp'].".png",178,60,45);
 
 

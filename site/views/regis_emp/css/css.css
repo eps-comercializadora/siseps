@@ -23,6 +23,6 @@ div.form-group:nth-child(4) > div:nth-child(3) > div:nth-child(1) > div:nth-chil
 	padding: 53px;
 	border-radius: 5px;
 }
-#inicio {
+#inicio,#guardar {
 	margin-top: 20px;
 }

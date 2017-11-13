@@ -39,6 +39,10 @@ public function buscar($datos){
  $sql='SELECT *,empresa.razon_social FROM persona,empresa where persona.id_empresa=empresa.id_emp and nacionalidad="'.$datos['nacionalidad'].'" and  cedula="'.$datos['cedula'].'" ';
 
  $datos=$this->_db->query($sql);
+
+
+
+
       
 return $datos->fetch();
 
@@ -46,6 +50,23 @@ return $datos->fetch();
 
 
 }
+public function buscar2($datos){
+
+  $sql='SELECT * FROM cne where nac="'.$datos['nacionalidad'].'" and  cedula="'.$datos['cedula'].'" ';
+
+ $datos=$this->_db->query($sql);
+
+
+
+
+      
+return $datos->fetch();
+
+
+
+
+}
+
 
 
 

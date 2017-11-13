@@ -82,6 +82,19 @@ $this->datos_pers = $datos->fetchall();
 
 }
 
+	public function info($id){
+
+ $sql="SELECT * FROM empresa where id_emp='$id' ";
+
+ $datos=$this->_db->query($sql);
+ $datos->setFetchMode(PDO::FETCH_ASSOC);
+ return $datos->fetch();
+
+
+
+
+}
+
 
 
 }

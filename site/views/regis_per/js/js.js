@@ -43,7 +43,7 @@ $(document).on('click', '#guardar', function() {
 
  }});
 
-$(document).on('blur','#cedula',function(){
+$(document).on('change','#cedula',function(){
 
 	$.get(base_url+'regis_per/buscar',{
 
@@ -53,24 +53,37 @@ $(document).on('blur','#cedula',function(){
 		},function(datos) {
 		
 			if(datos){
-				console.log(datos);
-				
+						console.log(datos);
+						alertify.alert("esta persona esta registrada en la empresa : "+datos['razon_social']+", y no puede registrarse nuevamente¡¡ ");
+						$('#rif').val("");
+						$('#cedula').val("");
+						$('#nombres').val("");
+						$('#apellidos').val("");
+						$('#telefono').val("");
+						$('#direccion').val("");
+						$('#codigo').val("");
+						$('#serial').val("");
+						$('#certificado_medico').val("");
+						$('#productora').val("");
+					}
+			else{
 
 
 
-    alertify.alert("esta persona esta registrada en la empresa : "+datos['razon_social']+", y no puede registrarse nuevamente¡¡ ");
+				$.get(base_url+'regis_per/buscar2',{
 
-    $('#rif').val("");
-$('#cedula').val("");
-$('#nombres').val("");
-$('#apellidos').val("");
-$('#telefono').val("");
-$('#direccion').val("");
-$('#codigo').val("");
-$('#serial').val("");
-$('#certificado_medico').val("");
-$('#productora').val("");
+					cedula:$("#cedula").val(),
+					nacionalidad:$("#nacionalidad").val()
 
+				},function(datos2){
+
+					console.log(datos2.Nombre1);
+
+					$('#nombres').val(datos2.Nombre1+" "+datos2.Nombre2);
+					$('#apellidos').val(datos2.Apellido1+" "+datos2.Apellido2);
+
+
+				},'json')
 
 			}
 
