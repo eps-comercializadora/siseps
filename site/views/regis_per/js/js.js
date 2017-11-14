@@ -45,6 +45,8 @@ $(document).on('click', '#guardar', function() {
 
 $(document).on('change','#cedula',function(){
 
+	$('img').removeAttr('hidden');
+
 	$.get(base_url+'regis_per/buscar',{
 
 			cedula:$("#cedula").val(),
@@ -77,10 +79,14 @@ $(document).on('change','#cedula',function(){
 
 				},function(datos2){
 
-					console.log(datos2.Nombre1);
+					if(datos2){
 
-					$('#nombres').val(datos2.Nombre1+" "+datos2.Nombre2);
-					$('#apellidos').val(datos2.Apellido1+" "+datos2.Apellido2);
+						$('#nombres').val(datos2.Nombre1+" "+datos2.Nombre2);
+						$('#apellidos').val(datos2.Apellido1+" "+datos2.Apellido2);
+						
+					}
+
+					$('img').attr("hidden", true)
 
 
 				},'json')
