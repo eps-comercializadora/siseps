@@ -3,10 +3,12 @@
 }
 .header-titulos {
 	min-height: 32px;
-	background: aqua;
+	background: #ddd;
 	text-align: center;
 	padding-top: 6px;
-	color: blueviolet;
+	color: #565656;
+	border-radius: 5px;
+	margin-bottom: 5px;
 }
 #logos {
 	margin-top: 34px;

@@ -21,7 +21,7 @@ class listaController extends Controller
         	$this->_view->lista=$this->_index->traer_emp();
         		
 
-
+        	//$this->_index->prueba();
 
 
 
