@@ -44,6 +44,24 @@ class regis_empController extends Controller
 
 	}
 
+    public function actualizar()
+    {
+
+
+			
+			$this->_view->setJs(array('js','js-actializar'));
+			$this->_view->setCss(array('css'));
+        	$this->_view->titulo = 'actualizacion de registro';
+			$this->_view->_municipios=$this->_index->cargar_muni("18");
+			$this->_view->datos=$this->_index->info($_GET['id']);
+
+
+
+
+			$this->_view->renderizar('actualizar');
+							
+			
+	}
 
 
 	  

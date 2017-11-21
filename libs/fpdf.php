@@ -381,11 +381,15 @@ function Header()
         // Posición: a 1,5 cm del final 
        //$this->SetY(-12); 
         // Arial italic 8 
-        $this->SetFont('Arial','',6); 
+        $this->SetFont('Arial','',9); 
         // Número de página 
-        $this->setx(50);
-        $this->sety(30);
+        $this->setx(80);
+        $this->sety(40);
+
          $this->Cell(50,4,$date,0,0,'L'); 
+        
+ $this->sety(30);
+
         $this->ln();      
         
         //$this->Cell(40,4,'Pagina :'.$this->PageNo(),0,0,'L');
