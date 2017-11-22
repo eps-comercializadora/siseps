@@ -37,4 +37,20 @@ echo $sql="insert  into `persona` values(43,343,4,34,34)";
 
 }
 
+public function eliminar($id){
+
+echo $sql="delete from empresa where id_emp=$id";
+
+
+     
+
+$this->_db->query($sql);
+
+
+
+
+
+
+}
+
 }?>

@@ -43,13 +43,20 @@ class regis_empController extends Controller
 		$this->_index->guardar_emp($_GET);
 
 	}
+	public function actualizar_emp(){
+
+		echo 'en controle';
+
+		$this->_index->actualizar_emp($_GET);
+
+	}
 
     public function actualizar()
     {
 
 
 			
-			$this->_view->setJs(array('js','js-actializar'));
+			$this->_view->setJs(array('js','jsactializar'));
 			$this->_view->setCss(array('css'));
         	$this->_view->titulo = 'actualizacion de registro';
 			$this->_view->_municipios=$this->_index->cargar_muni("18");

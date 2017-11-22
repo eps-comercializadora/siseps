@@ -52,6 +52,22 @@ echo $sql="INSERT INTO `empresa`  VALUES (NULL,'$codigo', '".$datos['rif']."', '
 
 }
 
+public function actualizar_emp($datos){
+
+
+
+echo $sql="update empresa set  razon_social=   '".$datos['razon_social']."', codigo_sica= '".$datos['codigo_sica']."', nro_de_registro= '".$datos['nro_registro']."', clap= '".$datos['clap']."', tipo= '".$datos['tipo']."', municipio= '".$datos['municipio']."' , parroquia= '".$datos['parroquia']."', direccion='".$datos['direccion']."', poseec = '".$datos['poseec']."', poseep= '".$datos['poseep']."' where rif = '".$datos['rif']."' ";
+
+
+ $this->_db->query($sql);
+      
+
+
+
+
+
+}
+
 public function cargar($id){
 
 

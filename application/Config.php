@@ -9,7 +9,7 @@
  */
 
 
-define('BASE_URL', 'http://192.168.1.60/');
+define('BASE_URL', 'http://192.168.0.60/');
 //define('BASE_URL', 'http://192.168.0.101/cumanax/');
 //define('BASE_URL', 'http://americas89.no-ip.info:8080/didactico/');
 //define('DEFAULT_CONTROLLER', 'faceblocked');

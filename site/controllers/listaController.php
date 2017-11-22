@@ -6,7 +6,8 @@ class listaController extends Controller
 	private $_index;
    	 public function __construct() {
         parent::__construct();
-  	 $this->_index=$this->loadModel('regis_per');	
+  	 $this->_index=$this->loadModel('regis_per');
+  	  $this->_index2=$this->loadModel('lista');	
       
     }
 
@@ -27,6 +28,17 @@ class listaController extends Controller
 
 			$this->_view->renderizar('index');
 							
+			
+	}
+
+	public function eliminar()
+    {
+
+
+			$this->_index2->eliminar($_GET['id']);
+
+			$this->index();
+    	
 			
 	}
 	

@@ -31,6 +31,9 @@
                         <th class="hidden-xs">RIF</th>
                         <th>RAZON SOCIAL</th>
                         <th>TIPO DE PRODUCTOR</th>
+                        <th>Cant</th>
+                        <th><em class="fa fa-cog"></em></th>
+
                     </tr> 
                   </thead>
                 
@@ -51,7 +54,8 @@
                             <td class="hidden-xs"><?php echo $this->lista[$i]['rif'] ?></td>
                             <td><?php echo $this->lista[$i]['razon_social'] ?></td>
                             <td><?php echo $this->lista[$i]['tipo'] ?></td>
-
+                            <td><?php echo $this->lista[$i]['mun_socios'] ?></td>
+                            <td>  <a href="<?php BASE_URL ?>lista/eliminar?id=<?php echo $this->lista[$i]['id_emp']?>" class="btn btn-default" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 
 
                            </tr>

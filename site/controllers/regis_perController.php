@@ -19,7 +19,7 @@ class regis_perController extends Controller
 			$this->_view->setJs(array('js'));
 			$this->_view->setCss(array('css'));
         	$this->_view->titulo = 'registro';
-        	$this->_view->_empresas=$this->_index->traer_emp();
+        	$this->_view->_empresas=$this->_index->traer_emp2();
         	$this->_view->renderizar('index');
 			
 			

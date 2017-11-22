@@ -1,12 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.3.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 03, 2017 at 06:40 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.5.37
+-- Servidor: localhost
+-- Tiempo de generación: 22-11-2017 a las 11:23:56
+-- Versión del servidor: 5.5.45
+-- Versión de PHP: 5.6.31
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -17,58 +18,176 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `siseps`
---
-CREATE DATABASE IF NOT EXISTS `siseps` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `siseps`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `empresa`
---
--- Creation: Nov 02, 2017 at 11:31 PM
---
-
-CREATE TABLE IF NOT EXISTS `empresa` (
-  `id_emp` int(11) NOT NULL AUTO_INCREMENT,
-  `rif` varchar(10) NOT NULL,
-  `razon_social` varchar(100) NOT NULL,
-  `nro_de_registro` varchar(20) NOT NULL,
-  `tipo` varchar(20) NOT NULL,
-  `municipio` varchar(11) NOT NULL,
-  `parroquia` varchar(11) NOT NULL,
-  `direccion` varchar(100) NOT NULL,
-  `poseec` varchar(5) NOT NULL,
-  `poseep` varchar(5) NOT NULL,
-  PRIMARY KEY (`id_emp`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
-
---
--- RELATIONS FOR TABLE `empresa`:
+-- Base de datos: `siseps`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `estados`
---
--- Creation: Nov 01, 2017 at 02:46 AM
+-- Estructura de tabla para la tabla `empresa`
 --
 
-CREATE TABLE IF NOT EXISTS `estados` (
-  `id_estado` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `empresa` (
+  `id_emp` int(11) NOT NULL,
+  `codigo` varchar(50) NOT NULL,
+  `rif` varchar(30) NOT NULL,
+  `razon_social` varchar(600) NOT NULL,
+  `codigo_sica` varchar(50) NOT NULL,
+  `nro_de_registro` varchar(50) NOT NULL,
+  `clap` varchar(600) NOT NULL,
+  `tipo` varchar(30) NOT NULL,
+  `municipio` varchar(60) NOT NULL,
+  `parroquia` varchar(60) NOT NULL,
+  `direccion` varchar(600) NOT NULL,
+  `poseec` varchar(60) NOT NULL,
+  `poseep` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `empresa`
+--
+
+INSERT INTO `empresa` (`id_emp`, `codigo`, `rif`, `razon_social`, `codigo_sica`, `nro_de_registro`, `clap`, `tipo`, `municipio`, `parroquia`, `direccion`, `poseec`, `poseep`) VALUES
+(1, '', '', 'panaderia luis guerra', '576971', '424-16779', 'montes paraiso i', 'Panadero', '303', '785', 'calle monte, casa s/n', 'SI', 'SI'),
+(2, '', '', 'panaderia mary', '163148', '42413375', 'cerro sabino', 'Panadero', '309', '808', 'cantarrana, sector cerro sabino', 'SI', 'SI'),
+(3, '', '', 'panaderia mis hijos de norma munos', '0000468899', '424-14741', 'jaguey de luna', 'Panadero', '309', '807', 'jaguey de luna sector tres picos, av autopista antonio jose de sucre casa n. 01', 'SI', 'SI'),
+(4, '', '', 'panaderia y pasteleria ernesto rodriguez', '0000488161', '424-15721', 'jose francisco bermudez', 'Panadero', '309', '810', 'calle rendon casa nro 95 sector centro cumana ', 'SI', 'SI'),
+(7, '', '', 'la gran familia de dios', '568506', 'upf-2017-09-00302', 'campo lindo y rondanillo', 'Panadero', '309', '811', 'san juan casa nro. s/n sector san juan viejo', 'SI', 'SI'),
+(8, '25a0a183d19b9f', 'c410356960', 'upf pand past y char jehova es dios de los cuatro hermanos marquez martinez', '0000481426', 'osp-upf-2017-09-00383', 'cancamure ii', 'Panadero', '309', '811', 'sector cancamure ii ', 'SI', 'SI'),
+(9, '25a0a1a437b0d9', 'C410356790', 'UPF "PANADERIA PASTELERIA Y CHARCUTERIA DON DE DIOS"', '568518', 'UPF-2017-09-00292', 'CANCAMURE i', 'Panadero', '309', '811', 'SERTOR CANCAMURE I', 'SI', 'SI'),
+(10, '25a0afd98d8277', 'C409948048', 'UNIDAD PRODUCTIVA FAMILIAR DE REINO ', '556008', 'OSP-UPF-2017-06-00260', 'CARDONAL II', 'Panadero', '309', '808', 'SECTOR CARDONAL II, CALLE PRINCIPAL CASA S/N', 'SI', 'SI'),
+(12, '25a0b0c0d92bcc', 'C410357029', 'PANADERIA PASTELERIA Y CHARCUTERIA PAN DE VIDA', '568403', 'OPS-UPF-2017-09-00380', 'CAMPOLINDO Y RONDNILLO', 'Panadero', '309', '811', 'SAN JUAN SECTOR CAMPOLINDO CASA S/N ', 'SI', 'SI'),
+(13, '25a0b0cefad938', 'c410356863', 'panaderia y reposteria yahve yire', '568491', 'osp-upf-2017-09-00389', 'cancamure i', 'Panadero', '309', '811', 'san juan de macarapana sector cancamure i calle principal casa s/n', 'SI', 'SI'),
+(14, '25a0b15988ccfe', 'c410356774', 'panaderia pasteleria y charcuteria dios es mi proveedor ', '568450', 'upf-2017-0900350', 'la compuerta y el charingal', 'Panadero', '309', '811', 'san juan sector la compuerta calle carretera cumana san juan casa s/n', 'SI', 'SI'),
+(15, '25a0b15a5f09bd', 'C410356901', 'UNIDAD PRODUCTIVA FAMILIAR PANADERIA PASTEERIA Y CHARCUTERIA DIOS ADMIRABLE', '568537', 'OSP-UPF-2017-09-00335', 'MACARAPANA', 'Panadero', '309', '811', 'SAN JUAN CALLE PRINCIPAL CASA S/N', 'SI', 'SI'),
+(16, '25a0b33884cafb', 'C410051710', 'UNIDAD PRODUCTIVA FAMILIAR BENDECIDOS DE DIOS', '', 'OSP-UPF-2017-07-00197', 'INAM BELLO MONTE', 'Panadero', '309', '808', 'CALLE PRINCIPAL SECTOR BELLO MONTES CASA 01 CUMANA', 'SI', 'SI'),
+(17, '25a0b3822758d6', 'c410362340', 'mini  panaderia el gran samuel', '', 'osp-upf-2017-09-00226', 'ezequiel zamora', 'Panadero', '309', '808', 'av. andres eloy blanco carretera  cumana - cumanacoa', 'SI', 'SI'),
+(18, '25a0b3911655b8', 'C410083735', 'UNIDAD PRODUCTIVA FAMILIAR PANADERIA JAOOO', '', 'OSP-UPF-2017-07-00428', 'CARDONAL I', 'Panadero', '309', '808', 'CALLE CARDONAL I SECTOR BOCA DE SABANA CUMANA', 'SI', 'SI'),
+(19, '25a0b52c8a5f15', 'C409896366', 'el gran mana', '568544', 'osp-upf-2017-06-00136', 'los vencedores ii', 'Panadero', '309', '807', 'urb brasil sector i vereda 41 casa numero 21 ', 'SI', 'SI'),
+(20, '25a0c32c16ba2a', 'v174459173', 'mini panaderia  rene herrera', '165059', '424-12374', 'vencedores ii', 'Panadero', '309', '807', 'brasil sector i', 'SI', 'SI'),
+(21, '25a0c36df83a1d', 'j408604604', 'upf dulceria bianca', 's/n', 'upf19-14-107-00049/2016', 'villa venezia', 'Dulceria', '309', '807', 'av cancamure, urb villa venezia', 'SI', 'SI'),
+(22, '25a0c44e285deb', 'v118331474', 'panaderia y charcuteria jimenez fuentes', '169841', '424-12260', 'villa bolivariana', 'Panadero', '309', '807', 'urb villa bolivariana franja la llanada', 'SI', 'SI'),
+(23, '25a0c5528d0e4e', 'v141252468', 'panaderia y pasteleria el pan de carlos planche fc', '576423', '424-17463', 'manzana a', 'Panadero', '309', '807', 'urb la llanada sector 3', 'SI', 'SI'),
+(24, '25a0c57c0bb28b', 'c409601463', 'upf ceci y dortor pan', 's/n', 'upf-2017-04-00081', 'villa dorada', 'Otros', '309', '809', 'urb villa dorada i ', 'SI', 'SI'),
+(25, '25a0c5ff4d5112', 'v200650480', 'panaderia eduardo fuentes fp', '576386', '424-16759', 'vencedores ii', 'Panadero', '309', '807', 'urb brasil sector i', 'SI', 'SI'),
+(26, '25a0c715744e9f', 'C09879534', 'JEDAY EXIT ', '', 'OSP-UPF-2017-06-00107', '1 MAYO 4 DE ABRIL', 'Panadero', '309', '807', 'PRIMERA TRANSVERSAL DE TRES PICOS  SECTOR 4 DE ABRIL CASA 49', 'SI', 'SI'),
+(27, '25a0c7c63ad1b8', 'V109475234', 'PANADERIA ARTESANAL CARLOS', '169332', '424-12490', 'MI REFUGIO', 'Panadero', '309', '807', 'URB BRASIL VDA 6 NRO 37 CUMANA EDO SUCRE', 'SI', 'SI'),
+(28, '25a0c897e877b6', 'c409759024', 'upf trilladora jocabed', '', 'osp-upf-2017-05-00161', 'el rincon de caiguire', 'Panadero', '309', '809', 'av carupano sector el rincon de caiguire', 'SI', 'SI'),
+(29, '25a0c9c57746e8', 'c410366931', 'panaderia artesanal princesas socialistas', '', 'osp-upf-2017-09-00509', 'barrio la lucha', 'Panadero', '309', '807', 'URB FRANJA DE LA LLANADA SECTOR LA LUCHA CASA 137', 'SI', 'SI'),
+(30, '25a0d7d1564fd9', 'c410091584', 'upf panaderia la ranita', '', 'osp-upf-2017-07-00555', '19 de Abril los TEJADOS', 'Panadero', '309', '807', 'AV CANCAMURE SECTOR TRES PICOS', 'SI', 'SI'),
+(31, '25a0d8c8d8f986', 'C4091114112', 'UPF EL PAN DE VIDA', '', 'UPF-19-14-107-000502016', 'EL PARAISO', 'Panadero', '309', '807', 'AV SANTA ELENA ZONA INDUSTRIAL SAN LUIS', 'SI', 'NO'),
+(32, '25a0d972e94a1f', 'J407724010', 'UPF LOS HERMANOS SALAZAR', '505571', 'UPF-19-14-107-00023', 'MI REFUGIO', 'Panadero', '309', '807', 'URB BRASIL SECTOR 01 VRDA 10 NRO 14', 'SI', 'SI'),
+(33, '25a0da1736599f', 'C409130983', 'UPF PANADERIA Y PASTELERIA UN NUEVO RENACER', '', 'OSP-UPF-2016-12-00034', 'LA BENDICION DE DIOS', 'Panadero', '309', '807', 'AV CANCAMURE DETRAS DE FARMAHOGAR', 'SI', 'NO'),
+(34, '25a0da40300e48', 'v126600638', 'panificadora argenys zapata , f.c', '164242', '424-12154', 'san jose ', 'Panadero', '309', '807', 'urb brasil sector 1 vereda 32 casa 02', 'SI', 'SI'),
+(35, '25a0daceeeb6c3', 'j308520497', 'panaderia mi comunidad c.a', '117400', 'tomo a-12 3er trimestre', 'el reencuentro de la comunidad', 'Panadero', '309', '807', 'urb fe y alegria vda56 casa 01', 'SI', 'SI'),
+(36, '25a0dc02cc67ea', 'v113837400', 'CHIQUIS PASTELLERIA FRANK CRUZ F.C', '500809', '424-15237', 'TIRSA TUTA', 'Pasteleria', '309', '807', 'URB LA LLANADA SECTOR 03 MANZANA E', 'SI', 'SI'),
+(37, '25a0dd7ba7374e', 'c409987213', 'salome', '571553', 'osp-upf-2017-06-00197', 'la pancha', 'Panadero', '309', '809', 'calle la marina avenida perimetral sector caigure casa s/n', 'SI', 'SI'),
+(38, '25a0df580df9b1', 'V6410059486', 'MINI PANADERIA Y DULCERIA LUISVER ', '', 'OPS-UPF-2017-03-00110', 'PUI PUI/CHICLANA', 'Panadero', '309', '808', 'EL PUI PUI PRIMERA CALLE CASA 3', 'SI', 'NO'),
+(39, '25a0e012ecc90f', 'v164841487', 'bombones y dulceria salazar f.c', '163143', '424-14496', 'consejo comunal vencedores ii', 'Panadero', '309', '807', 'urb brasil sector 1 calle 3 csa 02', 'SI', 'SI'),
+(40, '25a0e05e0409ad', 'v125205891', 'yaquelin belmonte  belmonte F.C', '161078', '424-15008', 'INDIGENA LA SABANA ', 'Panadero', '308', '806', 'SECTOR LA SABANA CALLE PRINCIPAL CASA S/N', 'SI', 'SI'),
+(41, '25a0ed94b2bf0f', 'v013258950', 'panificadora el buen samaritano gonzalez ', '152537', 'b-03-del (3er. trimestre)', 'las pepitonas ', 'Panadero', '309', '809', 'parcelamiento miranda sector f calle aguasai casa 11', 'SI', 'SI'),
+(42, '25a0edd4edf54e', 'v175387761', 'panaderia y pasteleria los tres hijos de gregory', '206626', '424-12700', 'sector 3 manzana b', 'Panadero', '309', '807', 'la llanada sector 3 calle 3', 'SI', 'SI'),
+(43, '25a0edde07ff3e', 'v248783482', 'panaderia y pasteleria caicedo el shadai. f.p.', '165611', '424-12876', 'sector 3 manzana b', 'Panadero', '309', '807', 'urb. la llanada v. 26 casa n. 04', 'SI', 'SI'),
+(44, '25a0ee368d4ac1', 'v118563871', 'pANADERIA Y PASTELERIA JOSE SALAZAR ', '117390', '424-12908', '27 DE NOVIEMBRE CALLE VIRGEN DEL Valle ', 'Panadero', '309', '807', 'urb. brasil calle 27 de noviembre casa 04 ', 'SI', 'SI'),
+(45, '25a0ee77f66494', 'V056977801', 'PASTELERIA DORIANNYS', '178261', '04041991', 'BRASIL SECTOR 1 MANZANA 5-A', 'Pasteleria', '309', '807', 'UBR BRASIL SECTOR 1 CALLE PRINCIPAL', 'SI', 'SI'),
+(46, '25a0eea43bf090', 'c409692051', 'unidad productiva familiar los rondon trabajamos unidos', '549831', 'osp-upf-2017-04-00187', 'inam campeche ', 'Panadero', '309', '808', 'av. principal sector boca de sabana el inam campeche ', 'SI', 'SI'),
+(47, '25a0eec3d4eb5b', 'C410659599', 'UPF PANADERIA LA GRAN BENDICION', '', 'OSP-UPF-2017-11-00040', 'FUERZA DEL MANZANARES ', 'Panadero', '309', '808', 'CANTARRANA SEGUNDA ENTRADA SECTOR FUERZA DEL MANZANARES', 'SI', 'NO'),
+(48, '25a0eee21c02a1', 'c410187743', 'el artesanito ', '574503', 'ops-upf-2017-08-00267', 'fe y alegria sector iii', 'Panadero', '309', '807', 'urb fe y alegria sector 03 vereda 28 casa 14', 'SI', 'SI'),
+(49, '25a0ef9327f790', 'v139241122', 'panaderia y pasteleria la familia de marvelis', '117078', '424-13258', 'guzman blaNCO SECTOR LAS CASITAS ', 'Panadero', '309', '807', 'urb. antonio guzman blanco av. principal casa 87 ', 'SI', 'SI'),
+(51, '25a0efd346ecb0', 'c410558616', 'unidad productiva familiar mis pipiolos', '', 'osp-upf-2017-11-00035', 'mirador abajo', 'Panadero', '309', '808', 'av jose vicente gutierrez sector ensenada comunidad mirador abajo', 'SI', 'NO'),
+(52, '25a0efd3538d95', 'V141258970', 'PANIFICADORA VELASQUEZ', '164383', '424-12103', 'VILLA SINAY', 'Panadero', '309', '807', 'URB BRASIL SECTOR 2 VILLA SANAY', 'SI', 'SI'),
+(53, '25a0f051b758ef', 'v139419509', 'la sucursal del cielo', '481637', 'upf-1914562-00001 ', 'brasil sector 2 el mercal', 'Panadero', '309', '807', 'bracil sector 2 av. 03 ', 'SI', 'SI'),
+(54, '25a0f06dcbff29', 'c410635622', 'panaderia artesanal agua santa ii', '', 'ops-upf-2017-11-00257', 'agua santa ii', 'Panadero', '309', '811', 'agua santa via cumanacoa cslle principal casa s/n', 'SI', 'SI'),
+(55, '25a0f07d194fac', 'C410067527', 'UPF AVALANCHA REVOLUCIONARIA', '575755', 'OSP-UPF-2017-07-00100', 'LA LLANADA SECTOR 3 MANZANA D', 'Panadero', '309', '807', 'LA LLANADA SECTOR 3 MANZANA D', 'SI', 'SI'),
+(56, '25a0f09486e834', 'C409873293', 'PANADERIA Y PATESTELERIA ARTESAL ROG ', '', 'OSP-UPF-2017-06-00075', 'MANZANA A SECTOR 03 ', 'Panadero', '309', '807', 'URB. LA LLANADA SECTOR 03 VEREDA 18  CASA 05', 'SI', 'NO'),
+(57, '25a0f1130197d7', 'j-40981910-8', 'panaderia y pasteleria amanda, c.a', '559235', '424-15782', 'antonio guzman blanco voluntad de dios', 'Panadero', '309', '807', 'urb antonio guzman blanco vda 2 casa 140', 'SI', 'SI'),
+(58, '25a0f11343716a', 'j-40981910-8', 'panaderia y pasteleria amanda, c.a', '559235', '424-15782', 'antonio guzman blanco voluntad de dios', 'Panadero', '309', '807', 'urb antonio guzman blanco vda 2 casa 140', 'SI', 'SI'),
+(59, '25a0f180a3b431', 'V099805273', 'PANADERIA ARTESANAL LA CASA DEL RICO PAN DE ORTIZ', '501323', '424-15113', 'VILLA BOLIVARIANA', 'Panadero', '309', '807', 'VILLA BOLIVARIANA CASA NRO 2 MANZANA 4', 'SI', 'SI'),
+(60, '25a0f1b740fccd', 'V050880725', 'PIZZERIA NACHA HECTOR JOSE MILA DE LA ROSA', '197803', '424-8910', 'ROMULO GALLEGOS', 'Otros', '309', '807', 'URB DON ROMULO GALLEGOS SECTOR CASCAJAL', 'SI', 'SI'),
+(61, '25a0f201f94f33', 'V099769730', 'PANADERIA MIS 3 NIETOS DE AZOCAR', '246901', '424-14474', 'VILLA HEROICA', 'Panadero', '309', '808', 'MIRAMAR SANTA INES SECTOR EL GUARATARO', 'SI', 'SI'),
+(62, '25a0f288c852bc', 'v050806045', 'noris del valle castro pino', '170384', '424-16386', 'fe y alegria sector iii', 'Panadero', '309', '807', 'fe  y alegria sector iii, vrda 28, casa 02', 'SI', 'SI'),
+(63, '25a0f2890a2480', 'v050806045', 'noris del valle castro pino', '170384', '424-16386', 'fe y alegria sector iii', 'Panadero', '309', '807', 'fe  y alegria sector iii, vrda 28, casa 02', 'SI', 'SI'),
+(64, '25a0f2e243687b', 'V106196148', 'LAS DELICIAS DE SAMUEL TOVAR', '166310', '424-14542', 'LA COMPUERTA Y EL CHARINGAL', 'Panadero', '309', '811', 'SAN JUAN DE MACARAPANA SECTOR LA COMPUERTA', 'SI', 'SI'),
+(65, '25a0f2e9b6b386', 'c410364319', 'unidad productiva familiar panaderia y pasteleria mis tesoros', '', 'osp-upf-2017-09-00221', 'nueva esperanza manzana "g"', 'Panadero', '309', '807', 'llanada sector 3 casa 18 vda 23', 'SI', 'NO'),
+(66, '25a0f3683da026', 'v146618274', 'distribuidora lius cardiel', '521384', '424-14249', 'la sanders', 'Panadero', '309', '808', 'sector la sanders. av. andres eloy blanco  casa s.n. ', 'SI', 'SI'),
+(67, '25a0f390e16414', 'V122759110', 'PANADERIA Y PASTELERIA MONTE ROQUE', '117100', '424-7241', 'LAS FLORES GUERITO', 'Panadero', '303', '785', 'CALLE LAS FLORES, GUERITO, EL GUAMACHE', 'SI', 'SI'),
+(68, '25a0f39e1f0ca3', 'v141261289', 'panaderia dios es amor de rubelina ', '165202', '424-12147', 'parcelamiento 4 de marzo', 'Panadero', '309', '807', 'urb. la llanada sector 04 de marzo calle manzana 06 casa 21 ', 'SI', 'SI'),
+(69, '25a0f3e89cabed', 'v126597459', 'panaderia y pasteleria shaddai yosmar, f.c.', '156195', '424-13151', 'cambio de rumbo ', 'Panadero', '309', '807', 'urb. la llanada sector cambio de rumbo  calle principal casa 23', 'SI', 'SI'),
+(70, '25a0f3f58027fe', 'c409709760', 'unidad productiva familiar "natvermois"', '', 'osp-upf-2017-04-00023', 'nuevo renacer', 'Panadero', '309', '807', 'andres eloy blanco calle la pascua casa 02', 'SI', 'SI'),
+(71, '25a0f491b01c04', 'c410362944', 'hira', '', 'osp-upf-2017-09-00346', '1 mayo 4 de abril ', 'Panadero', '309', '807', 'tres pico 1ro de mayo casa 59', 'SI', 'NO'),
+(72, '25a0f505d51e66', 'c409641538', 'upf panaderia y pasteleria  victoria ', '525743', 'osp-upf-2017-04-00149', 'antonio jose de sucre centro ', 'Panadero', '309', '807', 'sector centro calle petion casa 31 ', 'SI', 'SI'),
+(73, '25a1039743ab3b', 'V109520671', 'PANADERIA ARTESANAL DE CELENY RAMIREZ, FC', '449911', '424-16409', 'Villa bolivariana', 'Panadero', '309', '807', 'URB VILLA BOLIVARIANA, FRANJA DE LA LLANADA', 'SI', 'SI'),
+(74, '25a10494301af9', 'v086529390', 'panaderia anton 40, f.c', '148890', '424-437', 'la carabela ', 'Panadero', '309', '809', 'barrio la carabela calle 04, casa 1', 'SI', 'SI'),
+(75, '25a104c7a3a977', 'v165182266', 'panaderia mis hijos de agustin', '0000187067', '424-12707', 'luz y amor', 'Panadero', '309', '807', 'urb. brasil sector ii, calle 9 vereda 35 casa nro 8', 'SI', 'SI'),
+(76, '25a104d34814ee', 'v086382136', 'juana parejo, f.c', '182548', '424-13888', 'urb. los chaguaramos ', 'Panadero', '309', '807', 'urb. los chAGUARAMOS, CALLE LOS ROBLERCITOS, CASA 18 ', 'SI', 'SI'),
+(77, '25a105f8a91c8b', 'V104656010', 'DISTRIBUIDORA NANCY R, F.C', '179424', '424-13334', 'LAS PARCELAS ', 'Panadero', '309', '808', 'SECTOR LAS PARCELAS, CALLE LAS PARCELAS, CASA 166.', 'SI', 'SI'),
+(78, '25a1062a22ef98', 'V246903839', 'MINI PANADERIA Y PASTELERIA LOPEZ, F.C', '382672', '424-12256', '18 DE ABRIL', 'Panadero', '309', '809', 'URB. EL PEÑON SECTOR LA SABANA, CALLE 18 CASA S.N', 'SI', 'SI'),
+(79, '25a12e4daa4cdb', 'v086374567', 'panaderia lianka de carlos coronado', '214911', '42417006', 'progresistas', 'Panadero', '309', '807', 'brasil sur, calle 1 terraza 4 casa 15', 'SI', 'SI'),
+(80, '25a12e5c92c5ad', 'V193305381', 'PANIFICADORA MARIN SANCHEZ, F.C', '449839', '424-4988', 'NUEVA ESPERANZA MANZANA G', 'Panadero', '309', '807', 'LA LLANADA SECTOR 3', 'SI', 'SI'),
+(81, '25a12e7aa1dd49', 'c408875365', 'upf panaderia y pasteleria vhalery', '492928', 'upf-19-14-107-00046', 'guzman blanco sector las casitas', 'Panadero', '309', '807', 'antonio guzman blanco, av franja la llanada casa 23', 'SI', 'SI'),
+(82, '25a12ea6b08e98', 'V109506245', 'PANADERIA ARTESANAL ANDRELI ANDRES ACEVEDO', '117394', '424-5170', 'CASCAJAL VIEEJO II', 'Panadero', '309', '807', 'AV PRINCIPAL CASCAJAL VIEJO II ', 'SI', 'SI'),
+(83, '25a12ebc29a55d', 'v174459297', 'mini panaderia juan marin', '117075', '424-15350', 'cascajal viejo ii', 'Panadero', '309', '807', 'urb. caserio ocv. 25 de julio calle santa rosa casa 26', 'SI', 'SI'),
+(84, '25a12f4335db01', 'c409601935', 'upf panaderia y dulceria maña', '', 'osp-uof-2017-04-00095', 'nuevo renacer ', 'Panadero', '309', '807', 'calle castellon sector 4 esquina  casa 135', 'SI', 'SI'),
+(85, '25a1302b6ada51', 'v038726370', 'panaderia teodora CORONADO F.C', '187039', '424-12363', 'AV, PANAMERICANA', 'Panadero', '309', '807', 'AV, PANAMERICANA CASA 159', 'SI', 'SI'),
+(86, '25a1305762307b', 'c410183292', 'upf panaderia mis seis hijos', '579475', 'osp-upf-2017-07-00320', 'manuela saenz', 'Panadero', '309', '807', 'brasil sector ii vrda 40 casa 02', 'SI', 'SI'),
+(87, '25a1308a51e0d9', 'V084385391', 'EL PAN DE MIS HIJOS', '323004', 'B-21 CUARTO TRIMESTRE', 'INAM CAMPECHE', 'Panadero', '309', '808', 'COMUNIDAD INAM CAMPECHE', 'SI', 'SI'),
+(88, '25a130af0a3807', 'V163138430', 'PANADERIA Y DULCERIA VELASQUEZ LYON', '482996', '424-12141', 'LAS CHARAS DE CANTARRANA', 'Panadero', '309', '808', 'CANTARRANA SECTOR LAS CHARAS', 'SI', 'SI'),
+(89, '25a132e865fe2e', 'v109544783', 'panaderia y pasteleria la casa del pan de mari vargas, f.c', '166789', '424-15353', 'vencedores por siempre ', 'Panadero', '309', '807', 'urb bebedero , vereda 25, casa 06', 'SI', 'SI'),
+(90, '25a1332ee76b81', 'v057081275', 'panaderia y pasteleria cruz rosal , f.c', '183334', '424-16570', '18 de abril ', 'Panadero', '309', '809', 'calle 18 de abril sector la sabana el peñon 32', 'SI', 'SI'),
+(91, '25a1333fa0505f', 'J409698483', 'PANADERIA Y PASTELERIA MI CARMECITA, C.A', '164931', '424-16100', 'CALLEJON GALLEGO', 'Panadero', '309', '808', 'CALLE RIVERO, CALLEJON RIVERO', 'SI', 'SI'),
+(92, '25a13356d6bddb', 'j409062376', 'panaderia pasteleria y viveres nueva jerusalem, c.a.', '514992', '424-15156', 'brisas de sucre', 'Panadero', '309', '809', 'brisas del golfo calle principal casa 21', 'SI', 'SI'),
+(93, '25a133beb74aba', 'j409558584', 'PANADERIA Y PASTELERIA DELYPAN, C.A', '5800998', '424-15827', 'LA GRUTA VIRGEN DEL VALLE ', 'Panadero', '309', '809', 'SECTOR CAIGUIRE , AVENIDA CARUPANO, CASA 25', 'SI', 'SI'),
+(94, '25a133d16e501a', 'v118312194', 'dulceria y panaderia las azucena lemus', '181922', '424-15667', 'comandante supremo hugo chavez fria', 'Panadero', '309', '807', 'tres picos ', 'SI', 'SI'),
+(95, '25a13407338b18', '167026083', 'inversiones raf 21, c.a.', '253588', '424-6738', 'las delicias de caiguire', 'Panadero', '309', '809', 'cristobal colon 5ta etapa calle principal mzna 39, casa 92', 'SI', 'SI'),
+(96, '25a13418b48cfb', 'J407773887', 'PANADERIA PASTELERIA Y CHARCUTERIA EL CARDUME, C.A', '431453', '424-12816', 'EL TACAL I, SECTOR LA ALCABALA', 'Panadero', '309', '810', 'CARRETERA VIEJA CUMANA PUERTO LA CRUZ', 'SI', 'SI'),
+(97, '25a1341b5b64a7', 'V099731792', 'PANADERIA Y PASTELERIA NORVHAL DE NORAIMA CARIACO, F.C', '489195', '424-17111', 'GUZMAN BLANCO SECTOR LAS CASITAS ', 'Panadero', '309', '807', 'URB ANTONIO GUZMAN BLANCO, LA FRANJA LA LLANADA CASA 116', 'SI', 'SI'),
+(98, '25a1341b7c0544', 'V099731792', 'PANADERIA Y PASTELERIA NORVHAL DE NORAIMA CARIACO, F.C', '489195', '424-17111', 'GUZMAN BLANCO SECTOR LAS CASITAS ', 'Panadero', '309', '807', 'URB ANTONIO GUZMAN BLANCO, LA FRANJA LA LLANADA CASA 116', 'SI', 'SI'),
+(99, '25a1345f7ed10c', 'V126576311', 'PANIFICADORA DON RAMON DE LUISA MONASTERIO', '235537', '424-14242', 'LA CASIMBA', 'Panadero', '309', '807', 'LA CASIMBA, SEGUNDA CALLE, CASA 10', 'SI', 'SI'),
+(100, '25a13463d518a4', 'J408691663', 'UPF PANADERIA Y PASTELERIA MI DULCE ', '551830', 'UPF-191410700058', 'PARCELAMIENTO LA ESPERANZA ', 'Panadero', '309', '807', 'CALLE 9 CASA NR0 9 URB BRASIL  SECTOR LA ESPERANZA ', 'SI', 'SI'),
+(101, '25a13480db2d86', 'v086363140', 'panaderia y pasteleria maestre', ' 117376', '424-12754', 'la compuerta y el charingal', 'Panadero', '309', '811', 'la compuerta calle principal casa s/n', 'SI', 'SI'),
+(102, '25a14163f97bf9', 'v138360934', 'comercial marquez rosario fc', '237180', '424-15663', 'brisas bolivarianas', 'Panadero', '307', '796', 'brisas bolivarianas sector la manga', 'SI', 'SI'),
+(103, '25a14198081b01', 'v9273175', 'panaderia nueva mariguitar de antonio ravelo fc', '120042', '424-14608', 'los apartamentos', 'Panadero', '301', '1139', 'urb. nueva mariguitar sector los apartamentos', 'SI', 'SI'),
+(104, '25a141f81ab6aa', 'v056957630', 'minipanaderia tocuchare artesanal de pedro zapata, f.c.', '117115', '424-14610', 'tocuchare', 'Panadero', '301', '1139', 'ctra cumana-carupano casa s/n sector tocuchare', 'SI', 'SI'),
+(105, '25a142a5c6f192', 'v046835600', 'panaderia y pasteleria el cardumen de viannelly oyoque, f.c', '117403', '424-1913', 'cumanagoto somos todos ', 'Panadero', '309', '810', 'cumanagoto I sector b vda 1-a', 'SI', 'SI'),
+(106, '25a1433a87d88d', 'c410636149', 'upf vallita y mi familia ', '', 'osp-upf-2017-11-00260', 'parcelamiento 4 de marzo', 'Panadero', '309', '808', 'la llanada sector 1 avenida 07', 'SI', 'SI'),
+(107, '25a14390acbdd1', 'v118247988', 'panaderia don roque', '165063', '424-13649', 'TRINIDAD II ', 'Panadero', '309', '810', 'URB LA TRINIDAD', 'SI', 'SI'),
+(108, '25a14408c6ed2f', 'J410171430', 'PAN DE VIDA NISSI, C.A', '559884', '424-16910', '2021', 'Panadero', '309', '808', 'LA COPITA, AV FERNANDEZ DE ZERPA, CASA B10', 'SI', 'SI'),
+(109, '25a1444952e634', 'v068064488', 'panaderia mi sueño de collins, f.c', '116733', '424-12558', 'corazon de  jesus ', 'Panadero', '309', '808', 'las palomas calle corazon de jesus ', 'SI', 'SI'),
+(110, '25a1449427e957', 'V174454236', 'PANADERIA Y PASTELERIA GABRIEL GUTIERREZ 2017', '533709', '424-15661', 'SECTOR 3 MANZANA B', 'Panadero', '309', '807', 'LA LLANADA SECTOR 3 CALLE 3', 'SI', 'SI'),
+(111, '25a14497359ab1', 'v152892779', 'panaderia y pasteleria  ebert febres, f.c ', '515357', '424-15600', 'sector 3 manzana b', 'Panadero', '309', '807', 'la llanada sector 3 calle 03', 'SI', 'SI'),
+(112, '25a144d3a6dc3b', 'v146714397', 'panaderia el vecino de luis reyes, f.c', '159559', '424-12405', 'antonio juzman blanco voluntad de dios ', 'Panadero', '309', '807', 'franja la llanada ', 'SI', 'SI'),
+(113, '25a145130a3b8d', 'J409063321', 'ROYMAN, C.A', '493270', '424-15142', 'VILLA DEL SUR', 'Panadero', '309', '807', 'URB LA LLANADA SECTOR 3 VILLA DEL SUR', 'SI', 'SI'),
+(114, '25a14564a09194', 'J409471047', 'PANADERIA Y PASTELERIA NUESTRA OBRA DE ARTE, C.A', '495305', '424-15597', 'JOSE VICENTE GUTIERREZ', 'Panadero', '309', '808', 'MUNDO NUEVO, CALLE LA ORQUIDEA ', 'SI', 'SI'),
+(115, '25a14599dd1785', 'v086352660', 'panaderia  artesanal el esfuerzo de jose veliz, f.c', '163767', '424-17233', 'villa socialista hugo chavez frias ', 'Panadero', '309', '809', 'villa solicista hugo chavez fria el peñon frente el cementerio ', 'SI', 'SI'),
+(116, '25a146eba87870', 'V062352902', 'PANADERIA Y PIZZERIA JARDIN GOURMET GIL, F.C', '187951', '424-13091', 'TRES PICOS, SECTOR LA CANCHA', 'Panadero', '309', '807', 'CALLE CAMINO REAL, SECTOR TRES PICOS, CASA 95B', 'SI', 'SI'),
+(117, '25a146ebeadea6', 'V062352902', 'PANADERIA Y PIZZERIA JARDIN GOURMET GIL, F.C', '187951', '424-13091', 'TRES PICOS, SECTOR LA CANCHA', 'Panadero', '309', '807', 'CALLE CAMINO REAL, SECTOR TRES PICOS, CASA 95B', 'SI', 'SI'),
+(118, '25a147e4fd2088', 'v086380010', 'mini panaderia y dulceria don antonio rodriguez, f.c ', '489333', '424-14949', 'parcelamiento la esperanza ', 'Panadero', '309', '807', 'brasil sur sector la esperanza ', 'SI', 'SI'),
+(119, '25a148391a70f0', 'c409944875', 'upf mas que vencedores por la fe', '5614337', 'osp-upf-2017-06-00144', 'o.c.i.v.h la ensenada b', 'Panadero', '309', '807', 'autopista antonio jose de sucre  detras de melecio millan ', 'SI', 'SI'),
+(122, '25a148ad76d8f7', 'C410323841', 'UPF PANADERIA ARTESANAL EL RICO PAN DE WICHO', '', 'OSP-UPF-2017-08-00289', 'LOS CAUTAROS', 'Panadero', '309', '808', 'PANTANILLO STR LOS CAUTAROS', 'SI', 'SI'),
+(123, '25a1565e06f510', 'c410024836', 'UPF familiar fran y su pan', '559333', 'osp-upf-2017-07-00113', 'LLAS PARCELAS', 'Panadero', '309', '808', 'AV VELA DE CORO SECTOR LAS PARCELAS', 'SI', 'SI'),
+(124, '25a1565e48bf03', 'c410024836', 'UPF familiar fran y su pan', '559333', 'osp-upf-2017-07-00113', 'LLAS PARCELAS', 'Panadero', '309', '808', 'AV VELA DE CORO SECTOR LAS PARCELAS', 'SI', 'SI'),
+(125, '25a156a8a7195d', 'v104607159', 'panaderia anton hernan ', '250833', '424-17027', 'campo alegre i', 'Panadero', '309', '809', 'caiguire sector campo alegre detras de la prefectura', 'SI', 'SI'),
+(126, '25a156a8c8469c', 'v104607159', 'panaderia anton hernan ', '250833', '424-17027', 'campo alegre i', 'Panadero', '309', '809', 'caiguire sector campo alegre detras de la prefectura', 'SI', 'SI'),
+(127, '25a1573821e685', 'J407773887', 'PANADERIA  PASTELERIA Y CHARCUTERIA EL CARDUMEN, C.A', '431453', '424-12816', 'EL TACAL I, SECTOR LA ALCABALA', 'Panadero', '309', '810', 'CARRETERA VIEJA CUMANA PUERTO LA CRUZ', 'SI', 'SI'),
+(128, '25a157c690d289', 'v155250450', 'PANADERIA Y PASTELERIA LA ARTESANA DE JUAN ', '472231', '424-12726', 'REENCUENTRO ALTAGRACIANO', 'Panadero', '309', '807', 'CALLE PETION, MIRAMAR, LAS CASAS.', 'SI', 'SI'),
+(129, '25a15831e9cc59', 'c410024836', 'UPF familiar fran y su pan', '559333', 'osp-upf-2017-07-00113', 'LLAS PARCELAS', 'Panadero', '309', '808', 'AV VELA DE CORO SECTOR LAS PARCELAS', 'SI', 'SI'),
+(130, '25a158e31a1b13', 'V141259691', 'PANADERIA Y PASTELERIA YAJAIRA CARVAJAL, FC', '185507', '424-16487', 'SAN FERNANDO', 'Panadero', '309', '811', 'VIA NACIONAL CUMANA CUMANACOA', 'SI', 'SI'),
+(131, '25a158ecb8ed87', 'v084386568', 'panaderia la fortaleza  II de lyon gonzalez, f.c ', '117085', '424-7923', 'villa del sur', 'Panadero', '309', '807', 'la llanada sector III  ', 'SI', 'SI');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estados`
+--
+
+CREATE TABLE `estados` (
+  `id_estado` int(11) NOT NULL,
   `estado` varchar(250) NOT NULL,
-  `iso_3166-2` varchar(4) NOT NULL,
-  PRIMARY KEY (`id_estado`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+  `iso_3166-2` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- RELATIONS FOR TABLE `estados`:
---
-
---
--- Dumping data for table `estados`
+-- Volcado de datos para la tabla `estados`
 --
 
 INSERT INTO `estados` (`id_estado`, `estado`, `iso_3166-2`) VALUES
@@ -101,29 +220,21 @@ INSERT INTO `estados` (`id_estado`, `estado`, `iso_3166-2`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log`
---
--- Creation: Oct 24, 2017 at 09:46 PM
+-- Estructura de tabla para la tabla `log`
 --
 
-CREATE TABLE IF NOT EXISTS `log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `log` (
+  `id` int(11) NOT NULL,
   `id_usuario` int(11) DEFAULT NULL,
   `ip` varchar(12) NOT NULL,
   `controlador` varchar(30) NOT NULL,
   `metodo` varchar(30) NOT NULL,
   `fecha` date NOT NULL,
-  `hora` time NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=775 DEFAULT CHARSET=latin1;
+  `hora` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONS FOR TABLE `log`:
---
-
---
--- Dumping data for table `log`
+-- Volcado de datos para la tabla `log`
 --
 
 INSERT INTO `log` (`id`, `id_usuario`, `ip`, `controlador`, `metodo`, `fecha`, `hora`) VALUES
@@ -906,52 +1017,39 @@ INSERT INTO `log` (`id`, `id_usuario`, `ip`, `controlador`, `metodo`, `fecha`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu`
---
--- Creation: Oct 24, 2017 at 09:46 PM
+-- Estructura de tabla para la tabla `menu`
 --
 
-CREATE TABLE IF NOT EXISTS `menu` (
-  `id_menu` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `menu` (
+  `id_menu` int(11) NOT NULL,
   `titulo` varchar(50) NOT NULL,
-  `enlace` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `enlace` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONS FOR TABLE `menu`:
---
-
---
--- Dumping data for table `menu`
+-- Volcado de datos para la tabla `menu`
 --
 
 INSERT INTO `menu` (`id_menu`, `titulo`, `enlace`) VALUES
 (1, 'Registro de empresa productora', 'regis_emp'),
-(2, 'Registro de socios y/o encargados', 'regis_per');
+(2, 'Registro de socios y/o encargados', 'regis_per'),
+(3, 'Reportes', 'reportes'),
+(4, 'Lista', 'lista');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `municipios`
---
--- Creation: Nov 01, 2017 at 02:47 AM
+-- Estructura de tabla para la tabla `municipios`
 --
 
-CREATE TABLE IF NOT EXISTS `municipios` (
-  `id_municipio` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `municipios` (
+  `id_municipio` int(11) NOT NULL,
   `id_estado` int(11) NOT NULL,
-  `municipio` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_municipio`),
-  KEY `id_estado` (`id_estado`)
-) ENGINE=InnoDB AUTO_INCREMENT=463 DEFAULT CHARSET=utf8;
+  `municipio` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- RELATIONS FOR TABLE `municipios`:
---
-
---
--- Dumping data for table `municipios`
+-- Volcado de datos para la tabla `municipios`
 --
 
 INSERT INTO `municipios` (`id_municipio`, `id_estado`, `municipio`) VALUES
@@ -1294,25 +1392,17 @@ INSERT INTO `municipios` (`id_municipio`, `id_estado`, `municipio`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `parroquias`
---
--- Creation: Nov 01, 2017 at 02:47 AM
+-- Estructura de tabla para la tabla `parroquias`
 --
 
-CREATE TABLE IF NOT EXISTS `parroquias` (
-  `id_parroquia` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `parroquias` (
+  `id_parroquia` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
-  `parroquia` varchar(250) NOT NULL,
-  PRIMARY KEY (`id_parroquia`),
-  KEY `id_municipio` (`id_municipio`)
-) ENGINE=InnoDB AUTO_INCREMENT=1139 DEFAULT CHARSET=utf8;
+  `parroquia` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- RELATIONS FOR TABLE `parroquias`:
---
-
---
--- Dumping data for table `parroquias`
+-- Volcado de datos para la tabla `parroquias`
 --
 
 INSERT INTO `parroquias` (`id_parroquia`, `id_municipio`, `parroquia`) VALUES
@@ -2453,91 +2543,282 @@ INSERT INTO `parroquias` (`id_parroquia`, `id_municipio`, `parroquia`) VALUES
 (1135, 462, 'Santa Rosalía'),
 (1136, 462, 'Santa Teresa'),
 (1137, 462, 'Sucre (Catia)'),
-(1138, 462, '23 de enero');
+(1138, 462, '23 de enero'),
+(1139, 301, 'Marigüitar');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permisos`
---
--- Creation: Oct 24, 2017 at 09:46 PM
+-- Estructura de tabla para la tabla `permisos`
 --
 
-CREATE TABLE IF NOT EXISTS `permisos` (
-  `id_permisos` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `permisos` (
+  `id_permisos` int(11) NOT NULL,
   `id_menu` int(11) NOT NULL,
   `id_role` int(11) NOT NULL,
-  `permiso` int(1) NOT NULL,
-  PRIMARY KEY (`id_permisos`),
-  KEY `id_menu` (`id_menu`,`id_role`),
-  KEY `id_role` (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `permiso` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONS FOR TABLE `permisos`:
---
-
---
--- Dumping data for table `permisos`
+-- Volcado de datos para la tabla `permisos`
 --
 
 INSERT INTO `permisos` (`id_permisos`, `id_menu`, `id_role`, `permiso`) VALUES
 (1, 1, 1, 1),
 (2, 2, 1, 1),
 (3, 1, 2, 1),
-(4, 2, 2, 1);
+(4, 2, 2, 1),
+(5, 3, 1, 1),
+(6, 3, 2, 1),
+(7, 4, 2, 1),
+(8, 4, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `persona`
---
--- Creation: Nov 03, 2017 at 01:29 AM
+-- Estructura de tabla para la tabla `persona`
 --
 
-CREATE TABLE IF NOT EXISTS `persona` (
-  `id_persona` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `persona` (
+  `id_persona` int(11) NOT NULL,
+  `nacionalidad` varchar(30) NOT NULL,
   `id_empresa` int(11) NOT NULL,
-  `cedula` varchar(20) NOT NULL,
-  `rif` varchar(20) NOT NULL,
-  `nombres` varchar(20) NOT NULL,
-  `apellidos` varchar(20) NOT NULL,
-  `telefono` varchar(20) NOT NULL,
-  `direccion` varchar(60) NOT NULL,
-  `codigo` varchar(20) NOT NULL,
-  `serial` varchar(20) NOT NULL,
-  `certificado_medico` varchar(10) NOT NULL,
-  PRIMARY KEY (`id_persona`),
-  KEY `id_empresa` (`id_empresa`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `cedula` varchar(30) NOT NULL,
+  `rif` varchar(30) NOT NULL,
+  `nombres` varchar(100) NOT NULL,
+  `apellidos` varchar(100) NOT NULL,
+  `telefono` varchar(100) NOT NULL,
+  `direccion` varchar(600) NOT NULL,
+  `codigo` varchar(100) NOT NULL,
+  `serial` varchar(100) NOT NULL,
+  `certificado_medico` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
 --
--- RELATIONS FOR TABLE `persona`:
---   `id_empresa`
---       `empresa` -> `id_emp`
+-- Volcado de datos para la tabla `persona`
 --
+
+INSERT INTO `persona` (`id_persona`, `nacionalidad`, `id_empresa`, `cedula`, `rif`, `nombres`, `apellidos`, `telefono`, `direccion`, `codigo`, `serial`, `certificado_medico`) VALUES
+(1, 'V', 1, '17672353', 'v176723536', 'luis ernesto', 'guerra guerra', '04162795300', 'calle montes casa s/n', '0013121928', '0014542160', 'SI'),
+(2, 'V', 4, '14885952', 'v148859520', 'ernesto alejandro', 'rodriguez jimenez', '04261987986', 'calle rendon casa nro. 95 sector centro cumana', '0007583365', '0008332331', 'SI'),
+(3, 'V', 7, '18905441', 'v189054412', 'renso jose', 'marchan marchan', '02936427705', 'san juan casa s/n sector san juan viejo', '0006841544', '0007514258', 'SI'),
+(4, 'V', 7, '17213402', 'v172134021', 'yusweinna del carmen', 'gonzalez', '02936427705', 'san juan casa s/N sector san juan viejo', '0011099416', '0012245589', 'SI'),
+(5, 'V', 7, '19081443', 'v190814439', 'jesus alberto', 'gonzalez gonzalez', '02936427705', 'san juan casa s/n sector san juan viejo', '0009847844', '0010828591', 'SI'),
+(6, 'V', 8, '15268876', '152688764', 'MARLYN VICTORIA', 'MARQUEZ BRITO', '02936427705', 'SAN JUAN SECTOR CANCAMURE II CALLE PRINCIPAL  CASA S/N ', '0004386757', '0004797276', 'SI'),
+(7, 'V', 8, '12215000', 'V122150000', 'RICHARD JOSE', 'MARTINEZ BLANCO', '02936427705', 'SAN JUAN SECTOR CANCAMURE II CASA NUMERO 44', '0005863396', '0006438800', 'SI'),
+(8, 'V', 8, '23346491', 'V233464917', 'ABRAHAM JOSUE', 'MARQUEZ BRITO', '02936427705', 'SAN JUAN SECTOR CANCAMURE II  CASA 44', '0008778865', '0009639412', 'SI'),
+(9, 'V', 10, '11211029', 'V112110298', 'ALFREDO JOSE', 'MONRROY ZAPATA', '04128359317', 'BOCA DE SABANA SECTOR CARDONAL II', '0003755644', '0004108222', 'SI'),
+(10, 'V', 10, '10803239', 'V108032398', 'REINA YELITZA', 'ARAQUE RAMIREZ', '04128359317', 'BOCA DE SABANA SECTOR CARDONAL II', '0003754456', '0004109909', 'SI'),
+(11, 'V', 10, '13836073', 'V138360730', 'MARYELING ', 'ZERPA SALAZAR', '04261131286', 'BOCA DE SABANA SECTOR CARDONAL II', '0002755134', '0003005600', 'SI'),
+(12, 'V', 9, '19893565', 'V198935650', 'RAUL JOSE', 'MALAVE MAGO', '04163912315', 'SAN JUAN SECTOR CANCAMURE I CALLE PRINCIPAL CASA S/N', '0006798940', '0007467695', 'SI'),
+(13, 'V', 9, '13835332', 'V138353326', 'LISBETH DEL VALLE', 'MAGO ', '04163912315', 'SAN JUAN SECTOR CANCAMURE I CALLE PRINCIPAL CASA S/N', '0005260433', '0005766333', 'SI'),
+(14, 'V', 9, '10463742', 'V1O4637422', 'JOSE FEDERICO', 'MALAVE BETANCOURT', '04163912315', 'SAN JUAN SECTOR CANCAMURE I CALLE PRINCIPAL CASA S/N', '0006684978', '0007343803', 'SI'),
+(15, 'V', 12, '15575387', 'V155753877', 'JOSE ANGEL', 'MAESTRE CARIACO', '02936427705', 'SAN JUAN SECTOR CAMPO LINDO CASA S/N', '0004375511', '0004785096', 'SI'),
+(16, 'V', 12, '20064253', 'V2006253', 'ANDREINA DEL VALLE', 'GOMEZ HERRERA', '04163961789', 'SAN JUAN SECTOR CAMPO LINDO CASA S/N', '0004374759', '0004784288', 'SI'),
+(17, 'V', 13, '25897019', '258970191', 'marielys liliana', 'silva rivas', '04262298526', 'san juan sector cancamure i calle principal casa s/n', '0003491336', '0003820374', 'SI'),
+(18, 'V', 12, '18417563', 'V184175637', 'NAIRELIS DEL CARMEN', 'CASTILLO CARIACO', '02936427705', 'URB. LA LLANADA SECTOR 3 CASA N 8 CUMANA', '0003927100', '0004297857', 'SI'),
+(19, 'V', 13, '19980099', 'v199800996', 'GERMAN JOSE', 'SUCRE GAMARDO', '04261844281', 'san juan cancamure i calle principal casa s/n', '0006733205', '0007396124', 'SI'),
+(20, 'V', 15, '18210672', 'V182106727', 'ARGENIS LUIS', 'RIVAS RIVAS', '04266927189', 'SAN JUAN SECTOR MACARAPANA CASA S/N', '0004350253', '0004757838', 'SI'),
+(21, 'V', 15, '18904311', 'V189043119', 'EVELYS MERCEDES', 'VICENT ACEVEDO', '04266927189', 'SAN JUAN SECTOR MACARAPANA CASA S/N', '0005829113', '0006400953', 'SI'),
+(22, 'V', 15, '19237835', '192378350', 'CARLOS ALBERTO', 'RIVAS RIVAS', '04266927186', 'SAN JUAN SECTOR MACARAPANA CASA S/N', '0008106304', '0008899288', 'SI'),
+(23, 'V', 13, '21093904', 'V210939047', 'EDGAR ALEXANDER', 'PRESILLA MENESES', '04261844281', 'SAN JUAN SECTOR CANCAMURE 1', '0003478647', '0003806373', 'SI'),
+(24, 'V', 14, '19239684', 'V192396847', 'ANGEL LUIS', 'MAESTRE CARIACO', '04261265943', 'SAN JUAN SECTOR LA COMPUERTA CASA S/N', '0000286231', '0003808584', 'SI'),
+(25, 'V', 14, '23806215', 'V238062159', 'MARLIS CAROLINA', 'ROJAS RIVAS', '04261265943', 'SAN JUAN SECTOR LA COMPUERTA CASA S/N', '0000285638', '0003771466', 'SI'),
+(26, 'V', 14, '12275542', 'V122755424', 'VICKI YACQUELIN', 'CARIACO ', '04261265943', 'SAN JUAN SECTOR LAS COMPUERTAS CASA S/N', '0001646767', '0001779616', 'SI'),
+(28, 'V', 16, '17447424', 'V174474247', 'CARLOS JESUS', 'VELASQUEZ VELASQUEZ', '04162804263', 'BOCA DE SABANA SECTOR INAM', '0008492664', '000931211', 'SI'),
+(29, 'V', 16, '17673798', 'V177637987', 'SOLAIDE COROMOTO', 'RODRIGUEZ URBAEZ', '04162804263', 'BOCA DE SABANA SECTOR INAM', '0008492779', '0009321336', 'SI'),
+(30, 'V', 16, '14670354', 'V146703549', 'ESTHER ALEJANDRA', 'ROMERO GUZMAN', '0416280426', 'BOCA DE SABANA SECTOR INAM', '0011464010', '0012655616', 'SI'),
+(31, 'V', 18, '11516341', 'V115163414', 'OSLAIDA JOSEFINA', 'VALDERREY AMAY', '04167822513', 'BOCA DE SABANA CALLE CARDONAL I  EL CERRO', '0003754640', '0004107111', 'SI'),
+(32, 'V', 18, '12659420', 'V126594204', 'JUAN ABELARDO', 'BETANCOURT MARQUEZ', '04167822513', 'BOCA DE SABANA CALLE CARDONAL I EL CERRO', '0003755510', '0004108076', 'SI'),
+(33, 'V', 17, '25099565', 'v250995659', 'MILAGROS DEL  VALLE', 'ROJAS NAVA', '04248984092', 'av andres eloy blanco, barrio ezequiel zamora,casa n°10', '0002056403', '0002234124', 'SI'),
+(34, 'V', 17, '16703267', 'v167032679', 'EDDY JOSE', 'CARRERA CARVAJAL', '04248984092', 'av andres eloy blanco, barrio ezequiel zamora, casa n°10', '0011799177', '0013042624', 'SI'),
+(35, 'V', 18, '25694221', 'V256942212', 'ANTONI MICAEL', 'BETANCOURT VALDERRY', '04167822513', 'BOCA DE SABANA CALLE CARDONAI I EL CERRO', '0215288389', '0017070865', 'SI'),
+(36, 'V', 18, '27075099', 'V270750997', 'OSLEIDYS NOHEMI', 'BETANCOURT VALDERREY', '04167822513', 'BOCA DE SABANA CALLE CARDONAL I EL CERRO', '0003753925', '0016984380', 'SI'),
+(37, 'V', 17, '18212960', 'v182129603', 'FLORENTINO DAVID', 'CARRERA CARVAJAL', '04266821166', 'av. andres eloy blanco, barrio ezequiel zamora casa n°10', '0003370380', '0003687050', 'SI'),
+(38, 'V', 17, '23923773', 'v239237734', 'ANA MERCEDES', 'YENDEZ RENDEL', '04266821166', 'av andres eloy blanco barrio ezequiel zamora casa n°10', '0003370042', '0003686676', 'SI'),
+(39, 'V', 19, '15361210', 'v153612109', 'YELITZA DEL VALLE', 'RONDON HURTADO', '04163248369', 'urb brasil sector ii vereda 51 casa 01', '0011234254', '0012397438', 'SI'),
+(40, 'V', 19, '15110738', 'v151107385', 'GERMAN DEL VALLE', 'MALAVE OTERO', '04163248369', 'urb brasil sector ii vereda 54 casa 01', '0007243805', '0007956074', 'SI'),
+(41, 'V', 19, '14596469', '145964691', 'EUGENIA ALEJANDRA', 'ACUÃ‘A CAMPOS', '04163248369', 'urb brasil sector i vereda 41 casa 21', '0002639636', '0002880770', 'SI'),
+(42, 'V', 20, '17445917', 'v17445173', 'RENE JOSE', 'HERRERA URBANEJA', '04248143956', 'URB.BRASIL, VEREDA 46 CASA N°1', '0010845016', '0011951464', 'SI'),
+(43, 'V', 21, '3870973', 'v038709735', 'BLANCA STELLA', 'RAFASCHERI ALVAREZ', '04147773342', 'urb. villa vanezia edif. sami n°3 piso n°4 apartamento4b', '0007542354', '0008286455', 'SI'),
+(44, 'V', 21, '16816366', 'v168163661', 'YUSNELLY DEL VALLE', 'DEFFITT BELIZARIO', '04128273886', 'urb. villa venezia, edf sami n°3 piso n°4 aptto n°4b', '0011749379', '0012985369', 'SI'),
+(45, 'V', 22, '11833147', 'v118331474', 'GREGORI ALEXANDER', 'JIMENEZ FUENTES', '04148164226', 'franja la llanada sector villa bolivariana edf manz 11 ', '0009021393', '0009909215', 'SI'),
+(46, 'V', 21, '19239551', 'v19239551', 'HENRY JOSE', 'VELASQUEZ RAFASCHIERI', '04128427151', 'urb. villa venezia, edif. sami nro 3 piso 4 apart 4b', '0014875814', '0016491615', 'SI'),
+(47, 'V', 23, '14125246', 'v141252468', 'CARLOS EMILIO', 'PLANCHE BERMUDEZ', '02934516110', 'la llanada sector 3, vereda 13, casa 11', '001112514', '0012275240', 'SI'),
+(48, 'V', 25, '20065048', 'v20065048', 'EDUARDO FRANCISCO', 'FUENTES VALLERA', '04248038790', 'urb brasil v ereda 64 casa 24', '0009480918', '0010423102', 'SI'),
+(50, 'V', 26, '11826502', 'V118265021', 'DAMELIS DEL VALLE', 'DIAZ MENDOZA', '04248839399', 'PRIMERA TRANSVERSAL DE TRES PICO SECTOR 4 DE ABRIL CASA 49', '0002737784', '0002986880', 'SI'),
+(51, 'V', 26, '25656135', '256561358', 'CINDY NATHALY ', 'SILVA DIAZ ', '04148839399', 'PRIMERA TRANSVERSAL DE TRES PICOS SECTOR 4 DE MAYO CASA 49', '0001751316', '0002842106', 'SI'),
+(52, 'V', 26, '20346755', '203467555', 'DAISIRY CAROLINA', 'LOPEZ DIAZ', '04148315819', 'PRIMERA TRANSVERSAL DE TRES PICO SECTOR 4 DE ABRIL CASA 49', '0006123742', '0006730402', 'SI'),
+(53, 'V', 27, '10947523', 'V109475234', 'CARLOS ALBERTO', 'SALAZAR ', '04121884388', 'URB BRASIL SECTOR 1 VRDA 6 CASA 37', '0011327991', '0012504659', 'SI'),
+(54, 'V', 28, '19979378', 'v199793787', 'FELIX JOSE', 'GONZALEZ GONZALEZ', '04128357706', 'cumana mariguitar sector turpialito ', '0005109760', '0005598030', 'SI'),
+(55, 'V', 28, '20576737', 'v205767378', 'MARBELYS DEL CARMEN', 'RENGEL PEÃ‘A', '04167943786', 'ctra cumana mariguitar sector turpialito', '0003028056', '0003309652', 'SI'),
+(56, 'V', 28, '8242236', 'v082422362', 'ERBERTINO ', 'RENGEL ', '02936438820', 'calle principal nro 15 sector el rincon caiguire cumana', '0004569084', '0004995466', 'SI'),
+(57, 'V', 29, '16701845', 'V167018455', 'ANGEL LUIS', 'DURAN ACOSTA', '04165936072', 'URB LA LLANADA SECTOR LA LUCHA NRO 137', '0001171996', '0001267057', 'SI'),
+(58, 'V', 29, '22627871', 'V226278717', 'JORGE DAVID', 'ROSALES CARRILLO', '04129447794', 'URB LA LLANADA SECTOR VILLA BOLIVARIANA', '0011568441', '0012787849', 'SI'),
+(59, 'V', 29, '19538426', 'V195384262', 'LUIS RAMON', 'LEMUS ROSALES', '04160335315', 'URB VILLA BOLIVARIANA FRANJA LA LLANADA', '0001311759', '0001414902', 'SI'),
+(60, 'V', 29, '21387475', 'V213874752', 'KATHERINE DEL VALLE', 'CUMANA CUMANA', '04121803088', 'FRANJA DE LA LLANADA SECTOR LA LUCHA', '00011744860', '0001270081', 'SI'),
+(61, 'V', 30, '12563451', 'V125634512', 'REINA JOSEFINA', 'FARIAS LAREZ', '04120848441', 'AV CANCAMURE LOS TEJADOS CALLE II CASA 105A', '0005872880', '0006449321', 'SI'),
+(62, 'V', 30, '11735100', 'V117351005', 'RITO ANTONIO', 'CEBALLOS RUIZ', '04120848441', 'AV CANCAMURE URB LOS TEJADOS CASA 100A', '0010570449', '0011635782', 'SI'),
+(63, 'V', 30, '25654729', 'V256547291', 'WENDY VIRGINIA', 'BRICEÑO FARIAS', '04120848441', 'AV CANCAMURE URB LOS TEJADOS CASA 105A', '00100565058', '0011629038', 'SI'),
+(64, 'V', 30, '30078599', 'V300785995', 'PITER REY', 'ZAMORA FARIAS', '04120848441', 'AV CANCAMURE URB LOS TEJADOS CASA 105A', '0010569772', '0011634883', 'SI'),
+(65, 'V', 30, '27164232', 'V271642322', 'WENDRY PATRICIA', 'ZAMORA FARIAS', '04120848441', 'AV CANCAMURE URB LOS TEJADOS CASA 105A', '0005872656', '0006449077', 'SI'),
+(66, 'V', 31, '15111880', 'V151118808', 'ROMMER JOSE', 'ASTUDILLO GOMEZ', '04266891431', 'AV LAS INDUSTRIA SECTOR EL PARAISO', '0003480812', '0003808757', 'SI'),
+(67, 'V', 31, '16486662', 'V164866625', 'ELIZABETH ', 'ZAPATA ZAPATA', '04266891431', 'SECTOR EL PARAISO CASA 74', '0011081021', '0012225019', 'SI'),
+(68, 'V', 31, '16486663', 'V164866633', 'ZULEIMA DEL CARMEN', 'ZAPATA ZAPATA', '0426981431', 'BARRIO VILLA SANTIAGO SECTOR BOLIVARIANO', '0010509059', '0011564712', 'SI'),
+(69, 'V', 32, '14671573', ' V146715733', 'ROBINSON JOSE', 'SALAZAR HENRIQUEZ', '04248089415', 'CALLE PERU SECTOR PANAMERICANA', '0009089031', '0009985231', 'SI'),
+(70, 'V', 32, '11829460', 'V118294609', 'DARWIN JOSE', 'SALAZAR HENRIQUEZ', '04264813088', 'URB BRASIL VRDA 10 CASA 36', '0007253961', '0007967331', 'SI'),
+(71, 'V', 32, '4190452', 'V041904522', 'GLADYS JOSEFINA', 'HENRIQUEZ ', '04264813088', 'URB BRASIL SECTOR 01 VDA 10 CASA 36', '0011038181', '0012174241', 'SI'),
+(72, 'V', 33, '13692068', '136920681', 'YONATHAN DAVE', 'HRNANDEZ AVARIANO', '04148375676', 'BARRIO LA BENDICION DE DIOS', '0007236958', '0007948575', 'SI'),
+(73, 'V', 33, '16096015', 'V160960155', 'AURA ', 'VILLAPAREDES GOMEZ', '04148375676', 'URB LA BENDICION DE DIOS SECTOR LOS CHAGUARAMOS', '0007234712', '0007946095', 'SI'),
+(74, 'V', 34, '12660063', 'v126600638', 'ARGENYS JOSE', 'ZAPATA ', '04148239455', 'urb brasil sector 1 vereda 32 casa 02', '0014835500', '0016435443', 'SI'),
+(75, 'V', 35, '10952977', 'v10952976', 'FRANCISCO JOSE', 'VERA GONZALEZ', '04248014541', 'urb fe y alegria vda 56 casa 01', '0010627328', '001111702143', 'SI'),
+(76, 'V', 36, '11383740', 'V113837400', 'FRANK JOSE', 'CRUZ', '02934168690', 'URB LA LLANADA SECTOR 3 VDA 43 CASA14', '0014289407', '0015775394', 'SI'),
+(77, 'V', 37, '15111881', 'v151118816', 'LEVI JOSE', 'ASTUDILLO GOMEZ', '04141892397', 'CALLE LA MARINA AVENIDA PERIMETRAL SECTOR CAIGURE CASA S/N', '0004922234', '0005389013', 'SI'),
+(78, 'V', 37, '14886669', 'v148866690', 'TRINIMAR DEL CARMEN', 'RODRIGUEZ SALAYA', '04266981431', 'parcelamiento miranda calle lepaje casa 06', '0010772803', '001188847', 'SI'),
+(79, 'V', 37, '26704311', 'v267043112', 'gabianny del valle ', 'leon ramos ', '04266981431', 'sector caiguire abajo calle caucaguita casa 6', '0010773097', '0011869199', 'SI'),
+(80, 'V', 38, '15289341', '152893414', 'LUIS RAFAEL', 'VELASQUEZ MARTINEZ', '04267810524', 'EL PUI PUI PRIMERA CALLE CASA 3', '0000066063', '0000073010', 'SI'),
+(81, 'V', 38, '12273525', 'V122735253', 'DAMARYS BAUTISTA', 'FAJARDO ', '04267810524', 'EL PUI PUI PRIMERA CALLE CASA 3', '0007762069', '0008527479', 'SI'),
+(82, 'V', 38, '26293808', 'V262938081', 'josue manuel ', 'freites fajardo', '04267810524', 'el pui pui primera calle casa 3', '0008975339', '0009858293', 'SI'),
+(83, 'V', 39, '16484148', 'v164841487', 'FRANCISCO ANTONIO', 'SALAZAR MARCANO', '04248518768', 'urb brasil sector 1 calle 3 casa 02', '0007411779', '0008141693', 'SI'),
+(84, 'V', 40, '12520589', 'V125205891', 'YAQUELIN DEL VALLE', 'BELMONTE BELMONTE', '04261800880', 'SECTOR LA SABANA CALLE PRINCIPAL CASA S/N', '0012532903', '0013880011', 'SI'),
+(85, 'V', 41, '1325895', 'v013258950', 'HERNAN DE JESUS', 'SALAZAR GONZALEZ', '04149953774', 'parcelamiento miranda sector f calle aguasai casa 11', '0001827668', '0006410878', 'SI'),
+(86, 'V', 42, '17538776', 'v175387761', 'GREGORY JOSE', 'DIAZ RONDON', '04248287677', 'la llanada sector 3 vrda 3 casa 4', '0011109652', '0012257144', 'SI'),
+(87, 'V', 43, '24878348', 'v248783482', 'NATALIA ', 'CAICEDO DE GUTIERREZ', '04149991211', 'urb. la llanada v.26 casa n. 04', '0011105967', '0012252973', 'SI'),
+(88, 'V', 44, '11856387', '118563871', 'JOSE GREGORIO', 'SALAZAR RIVAS', '0293-4110352', 'urb, brasil calle 27 de noviembre casa 04 ', '0007260498', '0007974606', 'SI'),
+(89, 'V', 45, '5697780', 'V056977801', 'ROSELIANO ', 'MARQUEZ MERCIET', '02934511457', 'URB BRASIL SECTOR 1', '0009003548', '0009889439', 'SI'),
+(90, 'V', 46, '12272225', '122722259', 'CRUZ JOSE', 'RONDON ', '04248669114', 'urb. campeche sector inam calle 04 casa sin numero.', '0002049106', '0002226060', 'SI'),
+(91, 'V', 47, '19978862', 'V199788627', 'BEATRIZ MERCEDES', 'LYON SANCHEZ', '04248605746', 'CANTARRANA SEGUNDA ENTRADA SECTOR FUERZA DEL MANZANARES', '0000256805', '0000294010', 'SI'),
+(92, 'V', 46, '14886495', '148864957', 'RAIZA DEL VALLE', 'RAVELO ', '0424-8669114', 'urb. el inam campeche calle 04 casa s.n.', '0007471722', '0008208411', 'SI'),
+(93, 'V', 47, '17960882', 'V179608827', 'MARBELLYS MARIA', 'LYON ALZOLAR', '04141741689', 'URB LA LLANADA CALLE 3 CASA 59', '0011719717', '0012951128', 'SI'),
+(94, 'V', 46, '24513057', '245130577', 'cruz javier ', 'rondon ravelo ', '0424-8669114', 'sector el inam campeche calle 04 casa s.n.', '0011013680', '0012145400', 'SI'),
+(95, 'V', 48, '15112279', 'v151122791', 'MANUEL RAFAEL', 'PEREDA FUENTES', '04141898009', 'urb fe y alegria sector 03 vereda 28 casa 14', '0009977300', '0010971182', 'SI'),
+(96, 'V', 48, '15111874', 'v151118743', 'EDGAR MANUEL', 'REYES MATEY', '0412945909', 'urb fe y alegria sector 03 calle 2  casa 19 ', '0007558175', '0008304784', 'SI'),
+(97, 'V', 47, '16702505', 'V167025052', 'ELEODAN ALEJANDRO', 'VELASQUEZ GARCIA', '04248605746', 'CANTARRANA SEGUNDA ENTRADA SECTOR FUERZA DEL MANZANARES', '0011076994', '0012220464', 'SI'),
+(98, 'V', 46, '25414999', '254149990', 'JENIFER DEL CARMEN', 'RONDON RAVELO', '0424-8669114', 'sector campeche calle 04 casa s.n.', '0007190754', '0007897422', 'SI'),
+(99, 'V', 48, '16484507', 'v164845075', 'ANGELA MARIA', 'DELGADO BASTARDO', '04148317144', 'urb fe y alegria sector 1 vereda 44 casa 3', '0009970071', '0010963002', 'SI'),
+(100, 'V', 46, '26109870', '261098705', 'alejandro jose ', 'rondon ravelo', '0424-8669114', 'urb. campeche sector iv calle 4 casa 2', '0010994390', '0012123284', 'SI'),
+(101, 'V', 49, '13924112', '139241122', 'MARVELIS JOSEFINA', 'RODRIGUEZ ', '0416-8953570', 'URB.ANTONIO GUZMAN BLANCO AV. PRINCIPAL CASA 87 ', '0008680725', '0009530402', 'SI'),
+(102, 'V', 51, '12268896', 'v122688964', 'LISBETH DEL CARMEN', 'ALCALA DE VELASQUEZ', '04262817088', 'av jose vicente gutierrez mirador abajo sector la ensenada', '0008587998', '0009427049', 'SI'),
+(103, 'V', 52, '14125897', 'V141258970', 'MANUEL JOSE', 'VELASQUEZ MARTINEZ', '04168813827', 'URB BRASIL SECTOR VILLA SANAY', '0010906265', '0012022942', 'SI'),
+(104, 'V', 51, '11832582', 'v118325822', 'JOSE ANGEL', 'VELASQUEZ MILLAN', '04164709825', 'av jose vicente gutierrez casa s/n', '0012470300', '0013807153', 'SI'),
+(105, 'V', 51, '24739924', 'v247399247', 'jose ignacio ', 'VELASQUEZ ALCALA', '04262817088', 'av jose vicente gutierrez casa s/n', '0006281447', '0006902344', 'SI'),
+(106, 'V', 53, '13941950', '139419509', 'LUZ MARY', 'SANCHEZ VIVAS', '0424-8078627', 'brASIL SECTOR 02 AV. 03', '0010778338', '0011875186', 'SI'),
+(107, 'V', 54, '13631348', 'v126313483', 'EDGAR JOSE', 'FUENTES ', '04121856579', 'carretera cumana cumanacoa sector agua santa ii casa s/n', '0008225448', '0009029187', 'SI'),
+(108, 'V', 55, '26592174', 'V265921740', 'LUIS ANGEL DEL JESUS', 'MARQUEZ LEON', '04129455736', 'LA LLANADA SECTOR 3 ', '0010826847', '0011930199', 'SI'),
+(109, 'V', 54, '15112970', 'v151129702', 'SOLANGE DEL VALLE', 'GONZALEZ RODRIGUEZ', '04121856579', 'carretera cumana cumanacoa sector agua santa casa s/n', '0008217092', '0009020207', 'SI'),
+(110, 'V', 56, '10947533', '109475331', 'RAUL JOSE', 'OJEDA ', '0424-8765812', 'LA LLANADA SECTOR 03 VEREDA 18 CASA 05', '0001641756', '0001774085', 'SI'),
+(111, 'V', 56, '14124184', '141241849', 'MERLIN DEL CARMEN', 'MARCANO ', '0424-8765812', 'LA LLANADA SECTOR 03 VEREDA 18 Casa 05', '0002820324', '0003077054', 'SI'),
+(112, 'V', 54, '24739599', 'v247395993', 'wilnnan vicentina ', 'rodriguez lobaton ', '04149942250', 'carretera cumana cumanacoa sector agua santa casa s/n', '0011974232', '0013244146', 'SI'),
+(113, 'V', 55, '10464255', 'V104642558', 'NILO RAFAEL', 'MARQUEZ GUILLEN', '04262867423', 'MALARIOLOGIA CALLE 2 ', '0004621132', '0005051314', 'SI'),
+(114, 'V', 56, '25249220', '252492204', 'merliannys del valle ', 'rodriguez marcano ', '0414-9994380', 'sector 03 la llanada vereda 18 casa 05 ', '0011681910', '0012907450', 'SI'),
+(115, 'V', 54, '5085111', 'v050851113', 'ZORAIDA DEL CARMEN', 'RODRIGUEZ LOBATON', '02936438676', 'carretera cumana cumanacoa sector agua santa 11 casa s/n', '0005844064', '0006417439', 'SI'),
+(116, 'V', 55, '8435002', 'V084350024', 'DAISE DEL VALLE', 'LEON CAMPOS', '04126952271', 'La llanada sector vista hermosa', '0000127595', '0000140545', 'SI'),
+(117, 'V', 54, '15290701', 'v152907016', 'LILIANA JOSEFINA', 'GONZALEZ RODRIGUEZ', '04162953203', 'carretea cumana cumanacoa sector agua santa 11 casa s/n', '0007644397', '0008398702', 'SI'),
+(119, 'V', 58, '25352634', 'v253526340', 'JESUS ARMANDO', 'GUTIERREZ ESTEVES', '04161122222', 'urb antonio guzman blanco vrda 2 casa 140', '0008755776', '0009613605', 'SI'),
+(120, 'V', 2, '10954225', 'v109542250', 'MARY DEL VALLE', 'VILLALBA ', '04164184956', 'calle ali primera cantarra', '0012019654', '0013295575', 'SI'),
+(121, 'V', 59, '9980527', 'V099805273', 'DOUGLAS JOSE', 'ORTIZ ', '04261026535', 'VILLA BOLIVARIANA CASA 2 MANZANA 4', '0002136383', '0002322965', 'SI'),
+(122, 'V', 60, '5088072', 'V050880725', 'HECTOR JOSE', 'MILA DE LA ROCA ESPINOZA', '04121881288', 'URB CASCAJAL CALLE 101', '0008596099', '0009436154', 'SI'),
+(123, 'V', 61, '9976973', 'V099769730', 'ENRIQUE LUIS', 'AZOCAR VILLAFRANCA', '04261915370', 'SANTA INES SECTOR MIRAMAR CALLE EL GUARATARO', '0007422920', '0008154043', 'SI'),
+(124, 'V', 63, '5080604', 'v050806045', 'NORIS DEL VALLE', 'CASTRO PINO', '02934513416', 'urb. fe y alegria sector 3 vrda 28, casa 02', '0007113206', '0007812247', 'SI'),
+(125, 'V', 64, '10619614', 'V106196148', 'SAMUEL DE JESUS', 'TOVAR ', '04163182317', 'SAN JUAN SECTOR LA COMPUERTA', '0011678180', '0012903163', 'SI'),
+(126, 'V', 65, '16703105', 'v167031052', 'SUSANA GREGORINA', 'BRITO MATA', '04261837841', 'llanada sector 3 vda 23 casa 18', '0002335898', '0002542654', 'SI'),
+(127, 'V', 65, '18903453', 'v189034535', 'ANTONIO JOSE', 'QUEREGUAN  ', '04149996458', 'llanada sector iii vda 23, casa 18', '0002333636', '0002540193', 'SI'),
+(128, 'V', 65, 'v13630681', 'v136306819', 'jose argilio', 'barrios quereguan', '0293-514141495', 'llanada str 3 vrda 23, casa 18', '0014951003', '0016591786', 'SI'),
+(129, 'V', 66, '14661827', '146618274', 'LUIS MARIANO', 'CARDIET RODRIGUEZ', '04248456491', 'la sanders av. adres eloy blanco casa s.n. ', '0010543542', '0011604014', 'SI'),
+(130, 'V', 67, '12275911', 'V122759110', 'EDGARDO RAFAEL', 'ROQUE QUESADA', '04264806219', 'CRUZ SALMERON ACOSTA, SECTOR EL GUAMACHE', '0014922098', '0016553929', 'SI'),
+(131, 'V', 68, '14126128', '141261289', 'RUBELINA JOSEFINA', 'GONZALEZ ', '0426-9834882', 'la llanada  sector 04 de marzo calle manzana 06 casa 21 ', '0001335756', '0001440247', 'SI'),
+(132, 'V', 69, '12659745', '126597459', 'YOSMAR DEL CARMEN', 'RAMIREZ GARCIA', '0412-8684441', 'urb.la llanada sector cAMBIO DE RUMBO CALLE PRINCIPAL CASA 23', '0002059750', '0002237892', 'SI'),
+(133, 'V', 70, 'v8443327', 'v084433272', 'ramon enrique', 'velasquez betancourt', '04248113859', 'andres eloy blanco calle la pacua, casa nro 02', '0013152747', '0014573844', 'SI'),
+(134, 'V', 70, '24513704', 'v245137040', 'NATHALY ENRIQUE', 'VELASQUEZ ENIS', '04149839151', 'andres eloy blanco, calle la pascua, casa nro. 2', '0002559043', '0002791585', 'SI'),
+(135, 'V', 70, '25352976', 'v25352976', 'veronica ruth', 'velasquez enis', '04149839151', 'andres eloy blanco, calle la pascua, casa nro. 2', '0002695535', '0002941105', 'SI'),
+(136, 'V', 71, '21095424', 'v210954240', 'HIRALIZ DEL CARMEN', 'GONZALEZ RIVAS', '04121822269', 'tres picos 1ro de mayo casa 59', '0001432169', '0001571703', 'SI'),
+(137, 'V', 71, '25099493', 'v250994938', 'elvis jose ', 'gonzalez', '02934335052', 'tres picos calle 1ro de mayo casa s/n', '0012923787', '0014334063', 'SI'),
+(138, 'V', 71, '5690728', 'v056907285', 'FANY DEL VALLE', 'RIVAS ', '04149993392', 'tres picos calle 1ro de mayo casa s/n', '0012922736', '0014332672', 'SI'),
+(139, 'V', 72, '8400496', '084004967', 'MIRIAN DEL VALLE', 'MARTINEZ ', '0414-1897085', 'sector centro, calle peiton casa 31 ', '0008593702', '0009433406', 'SI'),
+(140, 'V', 72, '23581242', '235812424', 'JOSE WLADIMIR', 'CORDOVA MARTINEZ', '0414-1897085', 'sector centro, calle peiton casa 31 ', '0005906778', '0006487418', 'SI'),
+(141, 'V', 72, '27351770', '273517703', 'barbara wladimar ', 'cordova martinez ', '0414-1897085', 'sector centro calle peiton, casa 31 ', '0003233610', '0003536263', 'SI'),
+(142, 'V', 73, '10952067', 'V109520671', 'CELENY DEL CARMEN', 'RAMIREZ ORTIZ', '04248152522', 'URB VILLA BOLIVARIANA, FRANJA DE LA LLANADA', '0000680019', '0000736520', 'SI'),
+(143, 'V', 74, '8652939', '086529390', 'CARLOS ALBERTO', 'ANTON PEREIDA', '0426-3108978', 'barrio la carabela calle 4 casa 01 ', '0013502097', '0014956086', 'SI'),
+(144, 'V', 75, '16518226', 'v165182266', 'JUAN AGUSTIN', 'ROJAS SANTIL', '04164943686', 'urb. brasil sector ii, calle 9 vereda 35, casa 8', '0010461308', '0011511368', 'SI'),
+(145, 'V', 76, '8638213', '086382136', 'JUANA BAUTISTA', 'PAREJO RUIZ', '0416-2806756', 'URB. LOS CHAGUARAMOS, CALLE LOS ROBLECITOS, CASA 18 ', '0003664441', '0004008783', 'SI'),
+(146, 'V', 77, '10465601', '104656010', 'NANCY DEL VALLE', 'RODRIGUEZ ', '0293-4337414', 'SECTOR LAS PARCELAS, CALLE LAS PARCELAS CASA 166', '0007039364', '0007731841', 'SI'),
+(147, 'V', 78, '24690383', '246903839', 'VICTOR MANUEL', 'LOPEZ CEDEÃ‘O', '0424-8476918', 'EL PEÑON SECTOR LA SABANA, CAlle 18, casa s.n', '0011826883', '0013085829', 'SI'),
+(148, 'V', 79, '8637456', 'v086374567', 'CARLOS ENRIQUE', 'CORONADO HERNANDEZ', '04249417962', 'urb brasil sur primera calle terraza 4 casa 15', '0000285368', '0004910907', 'SI'),
+(149, 'V', 80, '19330538', 'V1933005381', 'EDUARDO LUIS', 'MARIN SANCHEZ', '04148244205', 'LA LLANADA SECTOR 3, AVENIDA 25, CASA N°12', '0019720464', '0011808870', 'SI'),
+(150, 'V', 81, '18777641', 'v187776410', 'LUIS ALBERTO', 'CARIEL CARIACO', '04248858743', 'antonio guzman blanco, av franja de la llanada casa 116', '0008037483', '0008825117', 'SI'),
+(151, 'V', 81, '20064593', 'v20064593', 'MARLON JOSE', 'PINTO ANTON', '04164377195', 'ciudad jardin nueva toledo, av, rotaria', '0006507166', '0007149358', 'SI'),
+(152, 'V', 82, '10950624', 'V10950624', 'ANDRES AVELINO', 'ACEVEDO JIMENEZ', '04147900110', 'CASCAJAL VIEJO CALLE CERRO EL NILO ,CASA NRO 35', '0004558221', '0004983905', 'SI'),
+(153, 'V', 83, '17445929', 'v174459297', 'juan jose ', 'marin navarro', '04165935162', 'urb. caserio ocv. 25 d julio calle anta rosa casa 26', '0005628467', '0006178550', 'SI'),
+(154, 'V', 84, '3480074', 'v034800746', 'CARLOS ORANGEL', 'GARCIA GARCIA', '04164932061', 'calle castellon sector 4 esquina casa 135', '0013948622', '0015419893', 'SI'),
+(155, 'V', 84, '5700282', 'v057002820', 'ISMENIA JOSEFINA', 'ALZOLAR ', '02934322963', 'calle castellon sector 4 esquina casa 135', '0010674176', '0011755417', 'SI'),
+(156, 'V', 84, '18211749', 'v182117494', 'KARLIS PATRICIA', 'GARCIA ALZOLAR', '02934322963', 'calle castellon sector 4 esquina casa 135', '0014416843', '0015909027', 'SI'),
+(157, 'V', 85, '3872637', 'V038726370', 'TEODORA ', 'CORONADO ', '04147744370', 'AV, PANAMERICANA CASA 159', '0002337928', '0002544855', 'SI'),
+(158, 'V', 86, '18416414', 'v184164147', 'SANTIAGO RAFAEL', 'GONZALEZ GONZALEZ', '04264854496', 'brasil sector ii vrda 40 casa 02', '0007289934', '0008007744', 'SI'),
+(159, 'V', 86, '15575814', 'v15575814', 'MARY YOJANNA', 'SUBERO VASQUEZ', '04264854496', 'brasil sector ii vrda 40 casa 02', '0000288295', '0004670709', 'SI'),
+(160, 'V', 86, '9273914', 'v092739143', 'MARIA NATIVIDAD', 'VASQUEZ MILLAN', '04264854496', 'brasil sector ii vrda 40 casa 02', '0002121389', '0002306488', 'SI'),
+(161, 'V', 87, '8438539', 'V084385391', 'CRUZ ANTONIO', 'GONZALEZ ', '04148403834', 'CAMPECHE SECTOR INAM MANZANA 2, CALLE 1, CASA 9', '0007506208', '0008246296', 'SI'),
+(162, 'V', 88, '16313843', 'V163138430', 'RAMON ANTONIO', 'VELASQUEZ LYON', '04266813787', 'CANTARRANA SECTOR LAS CHARAS VILLA REAL 2000, CASA 8', '0000081094', '0000089582', 'SI'),
+(163, 'V', 89, '10954478', 'v109544783', 'MARI ROSA', 'VARGAS VALLEJO', '029345129112', 'urb bebedero , casa 06 ', '0001978912', '0002148263', 'SI'),
+(164, 'V', 90, '5708127', 'v057081275', 'CRUZ MANUEL', 'ROSAL FUENTES', '04129874480', 'calle 18 de abril sector la sabana el peñon casa 32', '0004929854', '0005397513', 'SI'),
+(165, 'V', 91, '8475907', 'V084759070', 'CRISTOBAL RAMON', 'MONTANEZ MATA', '04147953663', 'MUNDO NUEVO, CASA NRO 22', '0014809839', '0016401500', 'SI'),
+(166, 'V', 92, '10460367', 'v104603679', 'JOSE LUIS', 'HERRERA ARISMENDI', '04248045591', 'brisas del golfo calle principal casa 21', '0009481748', '0010424003', 'SI'),
+(167, 'V', 93, '5979881', 'V059798819', 'LEOMAR ALEJANDRO', 'SUBERO AMUNDARAIN', '04142598648', 'SECTOR CAIGUIRE, AV CARUPANO, CASA 25', '0007205489', '0007913832', 'SI'),
+(168, 'V', 94, '11831219', 'v118312194', 'ODALYS DE LOS ANGELE', 'LEMUS MAZA', '02934117268', 'el lindero, calle las azucenas', '0005818284', '0006389041', 'SI'),
+(169, 'V', 95, '16702608', 'v167026083', 'YVAN JOSE', 'RODRIGUEZ FLORES', '04147765098', 'cristobal colon 5ta etapa calle principal mzna 38 casa 92', '0007039474', '0007731957', 'SI'),
+(170, 'V', 98, '9973179', 'V099731792', 'MORAIMA JOSEFINA', 'CARIACO ', '02934675256', 'URB ANTONIO GUZMAN BLANCO, LA FRANJA LA LLANADA CASA 116', '0009021945', '0009909835', 'SI'),
+(171, 'V', 99, '12657631', 'V126576311', 'LUISA CONCEPCION', 'MONASTERIO FRANCO', '04248472017', 'LA CASIMBA CALLE SANTA ROSA CASA 101', '0005647030', '0006199104', 'SI'),
+(172, 'V', 100, '13359348', 'V133593485', 'GIOCONDA YSABEL', 'RODRIGUEZ RODRIGUEZ', '04124744792', 'URB BRASIL PARCELAMIENTO LA ESPERANZA CALLE 2 CASA 18', '0011025510', '0012159296', 'SI'),
+(173, 'V', 100, '14129393', 'V141293938', 'HECTOR JOSE', 'GUAIMACUTO UGAS', '04124744792', 'URB BRASIL SECTOR LA ESPERANZA CALLE 9 CASA 9', '0011549262', '0012978956', 'SI'),
+(174, 'V', 100, '23683569', 'V236835690', 'LUIS HERNAN', 'BRITO RODRIGUEZ', '04268875895', 'BRASIL, PARCELAMIENTO LA ESPERANZA CALLE 2, CASA 18', '0014637907', '0016160556', 'SI'),
+(175, 'V', 101, '8636314', 'v086363140', 'JOSE LUIS', 'MAESTRE ', '04148847143', 'la compuerta calle principal casa s/n', '0004364521', '0004773261', 'SI'),
+(176, 'V', 102, '13836093', 'v138360934', 'ROSARIO DEL VALLE', 'MARQUEZ ', '04147923483', 'brisas bolivarianas, segunda calle, casa s/n', '0013585902', '0015043313', 'SI'),
+(177, 'V', 103, '9273175', 'v092731754', 'ANTONIO RAFAEL', 'RAVELO ', '04268815682', 'sector el calvario, calle san juan, casa s/n', '000222228', '0002417854', 'SI'),
+(178, 'V', 104, '5695763', 'v056957630', 'PEDRO ANTONIO', 'ZAPATA ', '04160300062', 'ctra cumana-carupano casa nro s/n sector tocuchare', '0008061655', '0008551053', 'SI'),
+(179, 'V', 105, '4683560', 'v046835600', 'VIANNELLY DEL VALLE', 'OYOQUE SILVA', '04147744512', 'cumanagoto 1ero calle 2 casa 4', '0010225869', '0011247337', 'SI'),
+(180, 'V', 106, '10463086', 'v104630860', 'MARIA MAGDALENA', 'TOVAR MARQUEZ', '04121933291', 'la llanada sector 1 urb 4 de marzo manzana 5 casa 8', '0001314267', '0001417559', 'SI'),
+(181, 'V', 106, '20347649', 'v203476490', 'NAYIRBIS YOSANDRI', 'TOVAR MARQUEZ', '04163261989', 'la llanada sector 1 urb 4 de marzo manzana 5 casa 8', '0001314999', '0001418331', 'SI'),
+(182, 'V', 106, '20347650', 'v203476503', 'NAYET ONNARA', 'TOVAR MARQUEZ', '02934111051', 'la llanada sector 1 urb 4 de marzo manzana 5 casa 8', '0001315332', '0001418684', 'SI'),
+(183, 'V', 107, '11824798', 'V118247988', 'JESUS ALEXIS', 'ROQUE QUESADA', '04263840619', 'URB LA TRINIDAD VRDA 3 CASA 8', '0011583743', '0012793880', 'SI'),
+(184, 'V', 108, '17762116', 'V177621168', 'RODRIGO ALEXANDER', 'CUMANA CUMANA', '04248614256', 'AV FERNANDEZ DE ZERPA, SECTOR LA COPITA, CASA B10', '0010333882', '0011403316', 'SI'),
+(185, 'V', 109, '6806448', 'v068064488', 'COLLINS JOSE', 'FIGUEROA FLORES', '04148367363', 'calle corazon de jesus sector las palomas casa 125', '0009008459', '0009894847', 'SI'),
+(186, 'V', 110, '17445423', 'V174454236', 'GABRIEL ERNESTO', 'GUTIERREZ CAICEDO', '04147868841', 'URB LA LLANADA SECTOR 3, CALLE 3, CASA 59', '0003435114', '0003758147', 'SI'),
+(187, 'V', 111, '15289227', 'v152892779', 'EBERT DAVID', 'FEBRES LYON', '04248628105', 'la llanada sector 3 calle 03 casa 42', '0003442137', '0003765882', 'SI'),
+(188, 'V', 112, '14671439', 'v146714397', 'LUIS JESUS', 'REYES HENRIQUEZ', '02934675412', 'sector pantanal  calle principal antonio guzman blanco csa 58', '0011982435', '0013253440', 'SI'),
+(189, 'V', 113, '14597670', 'V145976703', 'JAIRO RAFAEL', 'RODRIGUEZ HENRIQUEZ', '04121195290', 'URB LA LLANADA, SECTOR 3, VILLA DEL SUR', '0002166254', '0002355501', 'SI'),
+(190, 'V', 114, '20346506', 'V203465064', 'JESUS MIGUEL', 'MARTINEZ RODRIGUEZ', '04143930070', 'MUNDO NUEVO, CALLE LA ORQUIDEA', '0014801396', '001413367258', 'SI'),
+(191, 'V', 115, '8635266', 'v086352660', 'JOSE INOCENCIO', 'VELIZ ', '04268113955', 'urb villa socialista hugo chavez frias calle 5 casa 8', '0001855084', '0002010019', 'SI'),
+(192, 'V', 117, '17447043', 'V174470436', 'ERIKA SUSANA', 'RODRIGUEZ GIL', '04265828687', 'CALLE CAMINO REAL, SECTOR TRES PICOS, CASA 95B', '0008528978', '0009361227', 'SI'),
+(193, 'V', 118, '8638001', 'v086380010', 'ANTONIO RAFAEL', 'RODRIGUEZ ', '04140898578', 'urb brasil sur calle la esperanza 6 casa nro 11', '0002623021', '0002862077', 'SI'),
+(194, 'V', 119, '16486060', 'v164860600', 'ERIBELTO JOSE', 'FIGUEROA ', '04160836888', 'autopista antonio jose de sucre la ensenada b casa s/n', '0008223784', '0009027404', 'SI'),
+(195, 'V', 120, '9975755', 'V099757554', 'FELIX JOSE', 'MORALES MARCANO', '04140898578', 'BRASIL STR II VRDA 48 CASA 08', '0010736169', '0011826929', 'SI'),
+(196, 'V', 119, '5694573', 'v0594530', 'HECTOR LUIS', 'ARISTIMUÃ‘O MARVAL', '04163882565', 'urb tres picosa av ocv corazon de la patria  casa s/n', '0004983071', '0005457327', 'SI'),
+(197, 'V', 119, '14642563', 'v146425638', 'GABRIEL JOSE', 'ORTIZ MAGO', '04160836888', 'urb la llanada calle principal casa s/n', '0008226153', '0009029935', 'SI'),
+(198, 'V', 122, '19978863', 'V199788635', 'LISANDRA MARIA', 'LYON SANCHEZ', '04148165377', 'PANTANILLO CALLE PPAL CASA 84 LOS CAUTARO', '0007512277', '0008252984', 'SI'),
+(199, 'V', 122, '22628973', 'V226289735', 'LUIS BELTRAN', 'LYON SANCHEZ', '04148165377', 'PANTANILLO CALLE PPAL CASA 84 LOS CAUTAROS', '0011631715', '0012849555', 'SI'),
+(200, 'V', 122, '27626647', 'V276266477', 'JUAN BAUTISTA ALFONZO', 'VERA SANCHEZ', '04148165317', 'BARRIO EZEQUIEL ZAMORA CALLE 2 CASA 155', '0010450903', '0011499750', 'SI'),
+(201, 'V', 124, '8650997', 'V086509977', 'FRANK REINALDO', 'HERNANDEZ CARDIEL', '04262030601', 'LAS PARCELAS, FRENTE A LA EMERGENCIA DE LA CLINICA FIGUERA', '0012739531', '0014121594', 'SI'),
+(202, 'V', 124, '25656004', 'v256560042', 'samuel moises', 'hernandez lopez', '04262030601', 'las parcelas, casa 153', '0007812011', '0008581737', 'SI'),
+(203, 'V', 124, '20345255', 'v203452558', 'francy joelis', 'henandez lopez', '042690460663', 'las parcelas, casa 146', '0014241602', '0015725112', 'SI'),
+(204, 'V', 126, '10460715', 'v104607159', 'HERNAN JOSE', 'ANTON GARCIA', '04147779937', 'calle el refugio, n°23 caiguire', '0009078789', '0009973099', 'SI'),
+(205, 'V', 127, '11633977', 'V116339770', 'OLGA ELENA', 'MOTABAN OYOQUE', '04169351218', 'EL TACAL, SECTOR LA ALCABALA', '0012235036', '0013539676', 'SI'),
+(206, 'V', 128, '15525045', 'V155250450', 'JUAN CARLOS', 'GUERRERO YANES', '04128349013', 'AV GOMEZ RUBIO, CASA 3, SECTOR EL CENTRO', '0012610977', '0013971053', 'SI'),
+(207, 'V', 130, '14125969', 'V14125691', 'YAJAIRA DEL JESUS', 'CARVAJAL RONDON', '04147962351', 'SAN JUAN, SAN FERNANDO DE TATARACUAL', '0004657354', '0005090365', 'SI'),
+(208, 'V', 131, '8438656', 'v084386568', 'LUIS BELTRAN', 'LYON GONZALEZ', '04121919231', 'urb la llanada sector III calle el paseo casa s/n', '0010755966', '0011849588', 'SI');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
---
--- Creation: Oct 24, 2017 at 09:46 PM
+-- Estructura de tabla para la tabla `role`
 --
 
-CREATE TABLE IF NOT EXISTS `role` (
-  `id_role` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `role` (
+  `id_role` int(11) NOT NULL,
   `role` varchar(50) NOT NULL,
-  `peso` int(11) NOT NULL,
-  PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `peso` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONS FOR TABLE `role`:
---
-
---
--- Dumping data for table `role`
+-- Volcado de datos para la tabla `role`
 --
 
 INSERT INTO `role` (`id_role`, `role`, `peso`) VALUES
@@ -2547,63 +2828,174 @@ INSERT INTO `role` (`id_role`, `role`, `peso`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `switch`
---
--- Creation: Oct 24, 2017 at 09:46 PM
+-- Estructura de tabla para la tabla `switch`
 --
 
-CREATE TABLE IF NOT EXISTS `switch` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `switch` (
+  `id` int(11) NOT NULL,
   `accion` int(11) NOT NULL,
-  `fecha` date NOT NULL,
-  PRIMARY KEY (`id`)
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- RELATIONS FOR TABLE `switch`:
---
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
---
--- Creation: Oct 24, 2017 at 09:46 PM
+-- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL,
   `id_role` int(11) NOT NULL DEFAULT '2',
   `login` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `estado` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id_usuario`),
-  KEY `id_role_2` (`id_role`),
-  KEY `id_role_3` (`id_role`),
-  KEY `id_role_4` (`id_role`),
-  KEY `id_role_5` (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `estado` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- RELATIONS FOR TABLE `usuario`:
---
-
---
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `id_role`, `login`, `password`, `estado`) VALUES
 (1, 1, 'admin', '53362d5ea52a28e1a960323ea19b02cb2b828026', 1);
 
 --
--- Constraints for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Constraints for table `persona`
+-- Indices de la tabla `empresa`
+--
+ALTER TABLE `empresa`
+  ADD PRIMARY KEY (`id_emp`);
+
+--
+-- Indices de la tabla `estados`
+--
+ALTER TABLE `estados`
+  ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `log`
+--
+ALTER TABLE `log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id_menu`);
+
+--
+-- Indices de la tabla `municipios`
+--
+ALTER TABLE `municipios`
+  ADD PRIMARY KEY (`id_municipio`),
+  ADD KEY `id_estado` (`id_estado`);
+
+--
+-- Indices de la tabla `parroquias`
+--
+ALTER TABLE `parroquias`
+  ADD PRIMARY KEY (`id_parroquia`),
+  ADD KEY `id_municipio` (`id_municipio`);
+
+--
+-- Indices de la tabla `permisos`
+--
+ALTER TABLE `permisos`
+  ADD PRIMARY KEY (`id_permisos`),
+  ADD KEY `id_menu` (`id_menu`,`id_role`),
+  ADD KEY `id_role` (`id_role`);
+
+--
+-- Indices de la tabla `persona`
 --
 ALTER TABLE `persona`
-  ADD CONSTRAINT `persona_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id_emp`);
+  ADD PRIMARY KEY (`id_persona`);
+
+--
+-- Indices de la tabla `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id_role`);
+
+--
+-- Indices de la tabla `switch`
+--
+ALTER TABLE `switch`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD KEY `id_role_2` (`id_role`),
+  ADD KEY `id_role_3` (`id_role`),
+  ADD KEY `id_role_4` (`id_role`),
+  ADD KEY `id_role_5` (`id_role`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `empresa`
+--
+ALTER TABLE `empresa`
+  MODIFY `id_emp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+--
+-- AUTO_INCREMENT de la tabla `estados`
+--
+ALTER TABLE `estados`
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+--
+-- AUTO_INCREMENT de la tabla `log`
+--
+ALTER TABLE `log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=775;
+--
+-- AUTO_INCREMENT de la tabla `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `municipios`
+--
+ALTER TABLE `municipios`
+  MODIFY `id_municipio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=463;
+--
+-- AUTO_INCREMENT de la tabla `parroquias`
+--
+ALTER TABLE `parroquias`
+  MODIFY `id_parroquia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1140;
+--
+-- AUTO_INCREMENT de la tabla `permisos`
+--
+ALTER TABLE `permisos`
+  MODIFY `id_permisos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT de la tabla `persona`
+--
+ALTER TABLE `persona`
+  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+--
+-- AUTO_INCREMENT de la tabla `role`
+--
+ALTER TABLE `role`
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `switch`
+--
+ALTER TABLE `switch`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -16,9 +16,6 @@ $('#clap').addClass('validate[required]');
 $('#agregar').validationEngine();
 
 //$('#agregar').validationEngine('validate');
-				
-			
-
 
 //carga de select dinamico
 $(document).on('change', '#municipio', function() {
@@ -48,9 +45,7 @@ $(document).on('change', '#municipio', function() {
 
 			$('#parroquia').html(html);
 
-			},"json");
-
-});
+			},"json");});
 
 $(document).on('click', '#guardar', function() {
 	
@@ -73,11 +68,8 @@ $.get(base_url+'regis_emp/guardar_emp',{
 
 		},function() {
 		alertify.success('registro satisfactorio');
-		location.href=base_url+"regis_emp";
-		});
-
-
-}
+		//location.href=base_url+"regis_emp";
+		});}
 
 		
 
