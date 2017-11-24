@@ -42,7 +42,7 @@ $(document).ready(function()
 
 						},function() {
 						alertify.success('registro satisfactorio');
-						location.href=base_url+"regis_per";
+						location.href=base_url+"lista";
 					});
 			        
 			    } else {
