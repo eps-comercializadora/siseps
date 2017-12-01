@@ -68,7 +68,7 @@ $.get(base_url+'regis_emp/guardar_emp',{
 
 		},function() {
 		alertify.success('registro satisfactorio');
-		//location.href=base_url+"regis_emp";
+		location.href=base_url+"regis_emp";
 		});}
 
 		
