@@ -36,8 +36,11 @@ class listaController extends Controller
 
 
 			$this->_index2->eliminar($_GET['id']);
-
-			$this->index();
+			$this->_view->setJs(array('js'));
+			$this->_view->setCss(array('css'));
+        	$this->_view->titulo = 'lista de empresas';
+        	$this->_view->lista=$this->_index->traer_emp();
+			$this->_view->renderizar('index');
     	
 			
 	}

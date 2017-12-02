@@ -16,3 +16,6 @@ tr {
     text-transform: uppercase;
  
 }
+table {
+	font-size: 12px;
+}
