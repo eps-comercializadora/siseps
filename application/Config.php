@@ -9,7 +9,7 @@
  */
 
 
-define('BASE_URL', 'http://localhost/siseps/');
+define('BASE_URL', 'http://192.168.0.60:82/');
 //define('BASE_URL', 'http://192.168.0.101/cumanax/');
 //define('BASE_URL', 'http://americas89.no-ip.info:8080/didactico/');
 //define('DEFAULT_CONTROLLER', 'faceblocked');
@@ -25,7 +25,7 @@ define('SESSION_TIME', 1000000);
 define('HASH_KEY', '4f6a6d832be79');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'xxx');
 define('DB_NAME', 'siseps');
 define('DB_CHAR', 'utf8');
 
