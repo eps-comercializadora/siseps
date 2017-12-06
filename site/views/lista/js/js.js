@@ -17,7 +17,7 @@ var ocultar= function(){
 //funcion para ocultar o refrescar la pagina 
 var paginar=function(pag_a=1){
 
-	var pag = cant / 15;
+	var pag = cant / 20;
 
 	pag  = Math.ceil(pag);
 
@@ -39,7 +39,7 @@ var paginar=function(pag_a=1){
 
 
 
-	for (var i = ((pag_a*15)-14) ; i <= (pag_a*15) ; i++) {
+	for (var i = ((pag_a*20)-19) ; i <= (pag_a*20) ; i++) {
 
 
 	$("#fila"+i).attr('hidden',false);
@@ -64,15 +64,23 @@ $(document).on('click', '#pag_btn', function() {
 });
 
 
-$(document).on('click','tr',function(){
+$(document).on('click','#detalle',function(){
 
 		
 	var elemento=$(this);
 	
-
+	var tabla_interna=$(this).children('td')[4].firstElementChild.firstElementChild;
+	var nombre_empresa=$(this).children('td')[4].firstChild.textContent;
+		tabla_interna.hidden=false;
 	elemento.animate({height:"150px"},800);
 		
 });
+
+
+
+
+
+
 
 
 

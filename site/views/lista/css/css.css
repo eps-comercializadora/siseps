@@ -19,3 +19,15 @@ tr {
 table {
 	font-size: 12px;
 }
+
+#buscar {
+	position: relative;
+	width: 80%;
+	float: left;
+}
+.table-interna {
+	border: 1px solid #929892;
+	border-radius: 5px;
+	width: 80%;
+	margin-top: 17px;
+}
