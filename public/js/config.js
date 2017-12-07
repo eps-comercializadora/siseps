@@ -1,5 +1,5 @@
 //var base_url = 'http://192.168.0.101/cumanax/';
-var base_url = 'http://localhost:82/';
+var base_url = 'http://192.168.0.60/';
 //var base_url = 'http://localhost/siseps/';
 
 $(document).on('click', '#inicio', function() {
