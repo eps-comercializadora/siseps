@@ -17,9 +17,9 @@ tr {
  
 }
 table {
-	font-size: 12px;
+	font-size: 10px;
+	/* text-decoration: yellow; */
 }
-
 #buscar {
 	position: relative;
 	width: 80%;
