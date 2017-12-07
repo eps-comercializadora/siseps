@@ -75,7 +75,9 @@ class pdfController extends Controller
 			$this->_pdf->Cell(($this->_pdf->w-20)/4,4, utf8_decode('POSEE CERTIFICADO DEL INCES: '.$this->modelo->datos_emp[0]['poseec']),0,1,'L');
 
 			
-			$this->_pdf->Cell(($this->_pdf->w-20)/4,4, utf8_decode('PESEE PERMISO SANITARIO: '.$this->modelo->datos_emp[0]['poseep']),0,1,'L');
+			$this->_pdf->Cell(($this->_pdf->w-20)/4,4, utf8_decode('POSEE PERMISO SANITARIO: '.$this->modelo->datos_emp[0]['poseep']),0,1,'L');
+			$this->_pdf->Cell(($this->_pdf->w-20)/4,4, utf8_decode('CODIGO SICA: '.$this->modelo->datos_emp[0]['codigo_sica']),0,1,'L');
+			
 			
 			
 		
