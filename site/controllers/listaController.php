@@ -19,12 +19,19 @@ class listaController extends Controller
 			$this->_view->setJs(array('js'));
 			$this->_view->setCss(array('css'));
         	$this->_view->titulo = 'lista de empresas';
-        	$this->_view->lista=$this->_index->traer_emp();
+        	$res=$this->_index->traer_emp();
+
+        	//print_r($res);
+        	for ($i=0; $i <count($res) ; $i++) { 
         		
+        	$res[$i]['resultado']=$this->_index2->traer_socios($res[$i]['id_emp']);
+
+        	}
+        	$this->_view->lista=$res;
 
         	//$this->_index->prueba();
 
-
+        	//print_r($res);
 
 			$this->_view->renderizar('index');
 							
@@ -36,8 +43,11 @@ class listaController extends Controller
 
 
 			$this->_index2->eliminar($_GET['id']);
-
-			$this->index();
+			$this->_view->setJs(array('js'));
+			$this->_view->setCss(array('css'));
+        	$this->_view->titulo = 'lista de empresas';
+        	$this->_view->lista=$this->_index->traer_emp();
+			$this->_view->renderizar('index');
     	
 			
 	}
