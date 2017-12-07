@@ -69,25 +69,26 @@ $(document).on('click','.glyphicon-eye-open',function(){
 	var x=$(this).data('id');
 
 	$("#fila"+x).animate({height:"150px"},800);
+	$("#tabla"+x).show("3000");
 
-
+	console.log($("#tabla"+x));																														
 		
-	
-
-	//elemento.style.color="red";
-	//elemento.style.height="200px";
-	//console.log(elemento);
-	/*
-	var tabla_interna=$(this).children('td')[4].firstElementChild.firstElementChild;
-	var nombre_empresa=$(this).children('td')[4].firstChild.textContent;
-		tabla_interna.hidden=false;*/
-	//elemento.animate({height:"150px"},800);
 		
 });
 
+																													
+$(document).on('click','.glyphicon-eye-close',function(){
 
+	var x=$(this).data('id');
 
+	$("#fila"+x).animate({height:"50px"},800);
+	$("#tabla"+x).hide("3000");
 
+	console.log($("#tabla"+x));																														
+		
+		
+});
+																																	 
 
 
 

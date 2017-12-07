@@ -55,7 +55,7 @@
                                 
                                  <a id="detalle<?php echo $i+1 ?>" data-id="detalle<?php echo $i+1 ?>" class="btn btn-default" ><span data-id="<?php echo $i+1 ?>" class="glyphicon   glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
 
-                                  <a class="btn btn-default" ><span class="glyphicon   glyphicon glyphicon-eye-close" aria-hidden="true"></span></a>
+                                  <a  class="btn btn-default" ><span data-id="<?php echo $i+1 ?>" class="glyphicon   glyphicon glyphicon-eye-close" aria-hidden="true"></span></a>
                             
                             </td>
 
@@ -65,7 +65,7 @@
                             <td class="hidden-xs"><?php echo $this->lista[$i]['rif'] ?></td>
                             <td><?php echo $this->lista[$i]['razon_social'] ?>
                             <center>  
-<table hidden="hidden" class="table table-list table-interna">
+<table id="tabla<?php echo $i+1 ?>" hidden='hidden'  class="table table-list table-interna">
   <?php for ($x=0; $x < count($this->lista[$i]['resultado']); $x++): ?><tr>
   <td><?php echo $this->lista[$i]['resultado'][$x]['rif'] ?></td>
   <td><?php echo $this->lista[$i]['resultado'][$x]['nombres'] ?></td>
